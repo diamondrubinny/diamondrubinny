@@ -35,7 +35,7 @@ Free open-source **digital signage**. Design content, build layouts and run any 
 
 ![Stars](https://img.shields.io/github/stars/diamondrubinny/freescreensign?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/freescreensign?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/freescreensign?style=flat-square)
 
-**[→ Self-host it](https://github.com/diamondrubinny/freescreensign#readme)**
+**[→ Download latest release](https://github.com/diamondrubinny/freescreensign/releases/latest)** · [Self-host guide](https://github.com/diamondrubinny/freescreensign#readme)
 
 </td>
 </tr>
