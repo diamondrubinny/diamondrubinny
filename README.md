@@ -107,7 +107,7 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 <summary><b>🇮🇱 בעברית</b></summary>
 <div dir="rtl" align="right">
 
-**שלום, אני דיאמונד רובינני** — מפתח Full-Stack ובונה מערכות.
+**שלום, אני דיימונד רוביני — מפתח Full-Stack ובונה מערכות.
 אני בונה כלים חינמיים בקוד פתוח, מאובטחים, נגישים ומותאמים לעברית ול־RTL מהיסוד:
 מערכת הפעלה עם AI מקומי, שילוט דיגיטלי בהתקנה עצמית, לאנצ'ר ל־Android TV ועוד.
 
