@@ -128,16 +128,16 @@ internal sealed class TrayApp : ApplicationContext
         if (!_settings.Auto || _busy) return;
         // Never work inside the hook callback: wait until the application has processed the space.
         var timer = new System.Windows.Forms.Timer { Interval = 40 };
-        timer.Tick += (_, _) =>
+        timer.Tick += async (_, _) =>
         {
             timer.Stop();
             timer.Dispose();
-            TryAutoFix(e);
+            await TryAutoFixAsync(e);
         };
         timer.Start();
     }
 
-    private void TryAutoFix(WordEvent e)
+    private async Task TryAutoFixAsync(WordEvent e)
     {
         try
         {
@@ -147,7 +147,14 @@ internal sealed class TrayApp : ApplicationContext
             if (fix is null) return;
 
             if (_settings.IsProcessIgnored(WindowInfo.ProcessName(e.Window))) return;
-            if (WindowInfo.IsPasswordFieldFocused()) return;
+
+            // Never touch password fields; if the check cannot tell, do nothing (and forget what was typed).
+            if (!await PasswordGuard.IsSafeToTouchAsync())
+            {
+                _monitor.Line.Reset();
+                return;
+            }
+            if (_monitor.Epoch != e.Epoch || WindowInfo.Foreground != e.Window) return; // typed during the check
 
             string original = e.Word + " ";
             string retyped = fix.Replacement + e.Word[fix.Consumed..] + " ";
@@ -195,7 +202,11 @@ internal sealed class TrayApp : ApplicationContext
             }
             _lastFix = null;
 
-            if (WindowInfo.IsPasswordFieldFocused()) return;
+            if (!await PasswordGuard.IsSafeToTouchAsync())
+            {
+                _monitor.Line.Reset();
+                return;
+            }
 
             // 2. The current selection (copied through the clipboard, which is restored afterwards).
             bool isConsole = AppSettings.ConsoleWindowClasses.Contains(WindowInfo.ClassName(window));

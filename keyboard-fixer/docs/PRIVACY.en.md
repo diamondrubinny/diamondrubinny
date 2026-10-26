@@ -21,7 +21,7 @@ KeyFlip never writes typed text to disk or to logs.
 
 ## The keyboard hook (Windows app)
 The Windows app uses a low-level keyboard hook only to detect when a word has ended. It does not record, store, log or transmit keystrokes beyond the in-memory line described above.
-It does not act in password managers, terminals, remote-control tools, classic Windows password fields, or (by default) web browsers, where the Chrome extension is used instead. If you enable "Also work in browsers", password fields inside web pages cannot be detected, so disable it when typing passwords.
+It does not act in password managers, terminals, remote-control tools, password fields (detected through Windows UI Automation; if a field cannot be identified, KeyFlip does nothing) or (by default) web browsers, where the Chrome extension is used instead. If you enable "Also work in browsers", password detection inside web pages depends on the browser exposing accessibility information, so the extension is the more reliable option; disable the toggle when typing passwords.
 
 ## Chrome extension permissions
 - Content script on http/https pages: reads the last typed word in an editable field and replaces it. Password, payment-card and one-time-code fields and code editors are skipped.

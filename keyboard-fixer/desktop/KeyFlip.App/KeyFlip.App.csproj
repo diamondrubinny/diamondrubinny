@@ -19,6 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- UIAutomationClient: detects password fields in modern apps and (with accessibility on) browsers. -->
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" />
     <ProjectReference Include="..\KeyFlip.Core\KeyFlip.Core.csproj" />
     <EmbeddedResource Include="Assets\keyflip.ico" LogicalName="keyflip.ico" />
   </ItemGroup>

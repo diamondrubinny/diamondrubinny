@@ -15,7 +15,7 @@ Typed `akuo` instead of `שלום`, or `יקךךם` instead of `hello`? KeyFlip 
 - **Automatic correction:** type a word and press space; if it looks like it was typed in the wrong layout it is replaced. `Ctrl+Z` undoes it (extension); `Ctrl+Alt+Space` right after a fix undoes it (Windows app).
 - **Manual conversion:** select text (or leave the caret after the words) and press `Alt+Shift+Z` (extension) or `Ctrl+Alt+Space` (Windows app).
 - **Offline and private:** dictionary-based detection runs entirely on your device. No network requests, no analytics, no cookies.
-- **Safe by default:** skips password, payment-card and one-time-code fields, code editors, words containing digits, `@`, URLs or capital letters; the Windows app also skips password managers, terminals and (by default) browsers.
+- **Safe by default:** never touches password fields (the extension also skips fields named or labelled like passwords/PIN/OTP/card numbers and CSS-masked inputs; the Windows app asks Windows UI Automation whether the focused control is a password field and does nothing if it cannot tell), skips payment-card and one-time-code fields, code editors, words containing digits, `@`, URLs or capital letters; the Windows app also skips password managers, terminals and (by default) browsers.
 - **Accessible UI:** RTL Hebrew, keyboard operable, light/dark themes, automated WCAG 2.1 A/AA scan (axe-core).
 
 ## Install
@@ -23,7 +23,7 @@ Typed `akuo` instead of `שלום`, or `יקךךם` instead of `hello`? KeyFlip 
 
 **Chrome extension:** download and unzip `KeyFlip-chrome-extension.zip`, open `chrome://extensions`, enable *Developer mode*, choose *Load unpacked* and select the folder.
 
-Use either the extension or the app's "Also work in browsers" toggle, not both, to avoid double correction. In browsers the extension is recommended because it can detect password fields.
+Use either the extension or the app's "Also work in browsers" toggle, not both, to avoid double correction. In browsers the extension is recommended because it detects password fields most reliably.
 
 ## Build and test
 ```bash

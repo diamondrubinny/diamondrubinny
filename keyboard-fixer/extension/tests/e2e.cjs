@@ -7,7 +7,7 @@ const fs = require('node:fs');
 const assert = require('node:assert/strict');
 
 const PAGE = `<!doctype html><meta charset=utf-8><body>
-<textarea id=ta rows=3></textarea><input id=inp type=text><input id=pw type=password>
+<textarea id=ta rows=3></textarea><input id=inp type=text><input id=pw type=password><input id=pw2 type=text name=password><input id=pw3 type=text autocomplete=new-password><input id=pw4 type=text style="-webkit-text-security:disc"><input id=pw5 type=text aria-label="סיסמה">
 <div id=ce contenteditable=true style="min-height:40px;border:1px solid"></div></body>`;
 
 (async () => {
@@ -37,6 +37,21 @@ const PAGE = `<!doctype html><meta charset=utf-8><body>
   await check('input: correct words untouched', async () => { await page.fill('#inp', ''); await type('#inp', 'hello world שלום '); assert.equal(await val('#inp'), 'hello world שלום '); });
   await check('input: undo restores original', async () => { await page.fill('#inp', ''); await type('#inp', 'akuo '); await page.keyboard.press('Control+z'); await page.waitForTimeout(200); assert.equal((await val('#inp')).trim(), 'akuo'); });
   await check('password untouched', async () => { await type('#pw', 'akuo '); assert.equal(await val('#pw'), 'akuo '); });
+  for (const id of ['pw2', 'pw3', 'pw4', 'pw5']) {
+    await check(`password-like field #${id} untouched (auto + manual)`, async () => {
+      await type('#' + id, 'akuo ');
+      assert.equal(await val('#' + id), 'akuo ');
+      await worker.evaluate(async () => { const [t] = await chrome.tabs.query({ active: true }); await chrome.tabs.sendMessage(t.id, { type: 'convert' }); });
+      await page.waitForTimeout(300);
+      assert.equal(await val('#' + id), 'akuo ');
+    });
+  }
+  await check('password type: manual shortcut also untouched', async () => {
+    await page.click('#pw'); await page.keyboard.type('akuo');
+    await worker.evaluate(async () => { const [t] = await chrome.tabs.query({ active: true }); await chrome.tabs.sendMessage(t.id, { type: 'convert' }); });
+    await page.waitForTimeout(300);
+    assert.equal(await val('#pw'), 'akuo ' + 'akuo');
+  });
   await check('contenteditable: en->he', async () => { await type('#ce', 'akuo tck '); assert.equal((await val('#ce')).replace(/ /g, ' '), 'שלום אבל '); });
   await check('manual shortcut path: convert message', async () => {
     await page.fill('#inp', 'tk,');
