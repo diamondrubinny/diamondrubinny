@@ -1,0 +1,55 @@
+name: KeyFlip
+
+on:
+  push:
+    paths:
+      - 'keyboard-fixer/**'
+      - '.github/workflows/keyflip.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extension:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: keyboard-fixer/extension
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: keyboard-fixer/extension/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keyflip-chrome-extension
+          path: keyboard-fixer/extension/dist
+
+  desktop:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test core
+        run: dotnet test keyboard-fixer/desktop/KeyFlip.Core.Tests -c Release
+      - name: Publish (framework-dependent, needs .NET 8 Desktop Runtime)
+        run: dotnet publish keyboard-fixer/desktop/KeyFlip.App -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o out/framework-dependent
+      - name: Publish (self-contained)
+        run: dotnet publish keyboard-fixer/desktop/KeyFlip.App -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o out/self-contained
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keyflip-windows-framework-dependent
+          path: out/framework-dependent/KeyFlip.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keyflip-windows-self-contained
+          path: out/self-contained/KeyFlip.exe
