@@ -5,15 +5,15 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 (async () => {
-  const [framesDir, sfxPath, fpsArg] = process.argv.slice(2);
+  const [framesDir, sfxPath, fpsArg, lang = 'he'] = process.argv.slice(2);
   const fps = Number(fpsArg || 30);
   fs.mkdirSync(framesDir, { recursive: true });
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-  await page.goto('file://' + path.resolve(__dirname, 'promo.html'));
+  await page.goto('file://' + path.resolve(__dirname, 'promo.html') + '?lang=' + lang);
   await page.evaluate(() => document.fonts.ready);
   const duration = await page.evaluate(() => window.DURATION);
-  fs.writeFileSync(sfxPath, JSON.stringify({ duration, sfx: await page.evaluate(() => window.SFX) }));
+  fs.writeFileSync(sfxPath, JSON.stringify({ duration, sfx: await page.evaluate(() => window.SFX), narration: await page.evaluate(() => NARRATION) }));
   const total = Math.round(duration * fps);
   for (let i = 0; i < total; i++) {
     await page.evaluate((t) => window.render(t), i / fps);

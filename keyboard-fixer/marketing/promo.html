@@ -23,7 +23,7 @@
   #caret { display: inline-block; width: 6px; height: 90px; background: #2563eb; vertical-align: middle; margin: 0 6px; }
   #badge { position: absolute; top: 950px; left: 0; right: 0; display: flex; justify-content: center; }
   #badge span { background: #059669; color: #fff; font-weight: 800; font-size: 44px; padding: 14px 40px; border-radius: 999px; box-shadow: 0 10px 30px rgba(5,150,105,.5); }
-  #chips { position: absolute; top: 640px; left: 90px; right: 90px; display: flex; flex-direction: column; gap: 26px; }
+  #chips { position: absolute; top: 560px; left: 90px; right: 90px; display: flex; flex-direction: column; gap: 26px; }
   .chip { display: flex; align-items: center; gap: 28px; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.25); backdrop-filter: blur(6px); border-radius: 36px; padding: 28px 36px; font-weight: 800; font-size: 54px; }
   .chip svg { flex: none; width: 76px; height: 76px; }
   #cta { position: absolute; top: 640px; left: 0; right: 0; text-align: center; }
@@ -52,24 +52,53 @@
 <script>
 /* ------------------------------------------------------------------ data */
 const DUR = 30;
-const NARRATION = [
-  [0.0, 3.2, 'כתבתם משפט שלם... ורק אז שמתם לב שהמקלדת באנגלית?'],
-  [3.2, 7.0, 'הכול יצא ג׳יבריש, ואתם צריכים למחוק ולהקליד הכול מחדש.'],
-  [7.0, 11.5, 'תכירו את KeyFlip, כלי חינמי שמתקן את זה בשבריר שנייה.'],
-  [11.5, 16.0, 'פשוט ממשיכים להקליד. בסוף כל מילה הוא מזהה את הטעות... ומתקן לבד.'],
-  [16.0, 20.5, 'וזה עובד גם הפוך: עברית באנגלית, ואנגלית בעברית.'],
-  [20.5, 25.0, 'הכול רץ אצלכם במחשב, בלי לשלוח מידע, והוא לא נוגע בשדות סיסמה.'],
-  [25.0, 30.0, 'תוסף לכרום ותוכנה לווינדוס, בקוד פתוח ובחינם. הקישור בתיאור!'],
-];
-const HEADLINES = [
-  [0, 3.2, 'כתבתם באנגלית<br>בלי לשים לב?'],
-  [3.2, 7.0, 'הכול יצא <em>ג׳יבריש</em>...'],
-  [7.0, 11.5, 'תכירו את<br><em>KeyFlip</em>'],
-  [11.5, 16.0, 'מקלידים.<br><em>הוא מתקן.</em>'],
-  [16.0, 20.5, 'עובד <em>בשני<br>הכיוונים</em>'],
-  [20.5, 25.0, 'פרטי<br>ו<em>בטוח</em>'],
-  [25.0, 30.0, 'חינם.<br><em>הורידו עכשיו</em>'],
-];
+const LANG = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'he';
+document.documentElement.lang = LANG;
+document.documentElement.dir = LANG === 'en' ? 'ltr' : 'rtl';
+const TEXTS = {
+  he: {
+    narration: [
+      [0.0, 3.2, 'כתבתם משפט שלם... ורק אז שמתם לב שהמקלדת באנגלית?'],
+      [3.2, 7.0, 'הכול יצא ג׳יבריש, ואתם צריכים למחוק ולהקליד הכול מחדש.'],
+      [7.0, 11.5, 'תכירו את KeyFlip, כלי חינמי שמתקן את זה בשבריר שנייה.'],
+      [11.5, 16.0, 'פשוט ממשיכים להקליד. בסוף כל מילה הוא מזהה את הטעות... ומתקן לבד.'],
+      [16.0, 20.5, 'וזה עובד גם הפוך: עברית באנגלית, ואנגלית בעברית.'],
+      [20.5, 25.0, 'הכול רץ אצלכם במחשב, בלי לשלוח מידע, והוא לא נוגע בשדות סיסמה.'],
+      [25.0, 30.0, 'תוסף לכרום ותוכנה לווינדוס, בקוד פתוח ובחינם. הקישור בתיאור!'],
+    ],
+    headlines: [
+      'כתבתם באנגלית<br>בלי לשים לב?', 'הכול יצא <em>ג׳יבריש</em>...', 'תכירו את<br><em>KeyFlip</em>',
+      'מקלידים.<br><em>הוא מתקן.</em>', 'עובד <em>בשני<br>הכיוונים</em>', 'פרטי<br>ו<em>בטוח</em>', 'חינם.<br><em>הורידו עכשיו</em>',
+    ],
+    card1: 'המקלדת הייתה באנגלית...', card1b: 'KeyFlip מתקן אוטומטית', card2: 'ולהפך: המקלדת הייתה בעברית...',
+    fixed1: 'תוקן! ✓', fixed2: 'Fixed! ✓',
+    chips: ['הכול רץ במחשב שלכם', 'לא נוגע בשדות סיסמה', 'בקוד פתוח, בחינם'],
+    cta: ['הורדה חינם', 'תוסף Chrome · תוכנה ל-Windows', 'קוד פתוח · Apache-2.0 · הקישור בתיאור'],
+  },
+  en: {
+    narration: [
+      [0.0, 3.2, 'Typed a whole sentence in the wrong language?'],
+      [3.2, 7.0, 'Total gibberish. Now delete it all and retype.'],
+      [7.0, 11.5, 'Meet KeyFlip, a free tool that fixes it instantly.'],
+      [11.5, 16.0, 'Keep typing. At the end of each word, it spots the mistake and fixes it.'],
+      [16.0, 20.5, 'It works both ways: Hebrew to English, and English to Hebrew.'],
+      [20.5, 25.0, 'It runs on your computer, sends nothing anywhere, and never touches passwords.'],
+      [25.0, 30.0, 'Chrome extension and Windows app. Open source and free. Link in the description!'],
+    ],
+    headlines: [
+      'Wrong keyboard<br>language <em>again?</em>', 'Total <em>gibberish</em>...', 'Meet<br><em>KeyFlip</em>',
+      'Keep typing.<br><em>It fixes it.</em>', 'Works <em>both<br>ways</em>', 'Private<br>&amp; <em>safe</em>', 'Free.<br><em>Get it now</em>',
+    ],
+    card1: 'Keyboard was on English...', card1b: 'KeyFlip fixes it automatically', card2: 'And the other way around...',
+    fixed1: 'Fixed! ✓', fixed2: 'Fixed! ✓',
+    chips: ['Runs on your computer', 'Never touches passwords', 'Open source &amp; free'],
+    cta: ['Free download', 'Chrome extension · Windows app', 'Open source · Apache-2.0 · Link in description'],
+  },
+};
+const T = TEXTS[LANG];
+const NARRATION = T.narration;
+const HEADLINE_TIMES = [[0, 3.2], [3.2, 7.0], [7.0, 11.5], [11.5, 16.0], [16.0, 20.5], [20.5, 25.0], [25.0, 30.0]];
+const HEADLINES = HEADLINE_TIMES.map(([a, b], i) => [a, b, T.headlines[i]]);
 // Scene 1: Hebrew typed on an English layout. Scene 2: English typed on a Hebrew layout.
 const S1 = { typed: ['akuo', 'nv', 'akunl'], fixed: ['שלום', 'מה', 'שלומך'], t0: 0.6, cps: 9, flipAt: 11.9, flipGap: 0.55 };
 const S2 = { typed: ['יקךךם', 'אישמלד'], fixed: ['hello', 'thanks'], t0: 16.3, cps: 7, flipAt: 18.6, flipGap: 0.7 };
@@ -232,7 +261,7 @@ function renderField(S, t, lang) {
 const ICON_CHECK = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#10b981"/><path d="M20 39 L33 52 L57 26" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const ICON_LOCK = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#6366f1"/><rect x="20" y="34" width="36" height="26" rx="6" fill="#fff"/><path d="M26 34 V28 a12 12 0 0 1 24 0 V34" stroke="#fff" stroke-width="7" fill="none"/></svg>';
 const ICON_PC = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#f59e0b"/><rect x="16" y="20" width="44" height="29" rx="4" fill="#fff"/><rect x="30" y="52" width="16" height="5" fill="#fff"/><rect x="22" y="56" width="32" height="4" rx="2" fill="#fff"/></svg>';
-const CHIPS = [[21.0, ICON_PC, 'הכול רץ במחשב שלכם'], [22.3, ICON_LOCK, 'לא נוגע בשדות סיסמה'], [23.6, ICON_CHECK, 'בקוד פתוח, בחינם']];
+const CHIPS = [[21.0, ICON_PC, T.chips[0]], [22.3, ICON_LOCK, T.chips[1]], [23.6, ICON_CHECK, T.chips[2]]];
 
 /* ------------------------------------------------------------------- main */
 window.render = function (t) {
@@ -258,11 +287,11 @@ window.render = function (t) {
     const inS2 = t >= 16.0;
     if (t >= 20.5) { $('card').style.display = 'none'; }
     else if (!inS2) {
-      $('cardTitle').textContent = t < 7.0 ? 'המקלדת הייתה באנגלית...' : 'KeyFlip מתקן אוטומטית';
+      $('cardTitle').textContent = t < 7.0 ? T.card1 : T.card1b;
       $('field').style.direction = 'rtl';
       renderField(S1, t, 'en-typed');
     } else {
-      $('cardTitle').textContent = 'ולהפך: המקלדת הייתה בעברית...';
+      $('cardTitle').textContent = T.card2;
       $('field').style.direction = 'ltr';
       renderField(S2, t, 'he-typed');
     }
@@ -276,7 +305,7 @@ window.render = function (t) {
   const badge = $('badge');
   badge.style.display = fixedDone ? 'flex' : 'none';
   if (fixedDone) {
-    badge.querySelector('span').textContent = t < 16 ? 'תוקן! ✓' : 'Fixed! ✓';
+    badge.querySelector('span').textContent = t < 16 ? T.fixed1 : T.fixed2;
     const bt = t < 16 ? t - (S1.flipAt + S1.typed.length * S1.flipGap) : t - (S2.flipAt + S2.typed.length * S2.flipGap);
     badge.style.transform = `scale(${back(bt / 0.4).toFixed(3)})`;
   }
@@ -298,9 +327,9 @@ window.render = function (t) {
     const p = back((t - 25.2) / 0.5);
     const pulse = 1 + Math.sin(t * 6) * 0.03;
     cta.style.display = 'block';
-    cta.innerHTML = `<div class="btn" style="transform:scale(${(clamp(p, 0, 1.2) * pulse).toFixed(3)})">הורדה חינם</div>
-      <div class="sub">תוסף Chrome · תוכנה ל-Windows</div>
-      <div class="small">קוד פתוח · Apache-2.0 · הקישור בתיאור</div>`;
+    cta.innerHTML = `<div class="btn" style="transform:scale(${(clamp(p, 0, 1.2) * pulse).toFixed(3)})">${T.cta[0]}</div>
+      <div class="sub">${T.cta[1]}</div>
+      <div class="small">${T.cta[2]}</div>`;
   } else cta.style.display = 'none';
 
   // caption (burned-in subtitles)
