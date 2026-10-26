@@ -3,7 +3,8 @@
 <p align="center">
   <b>Full-stack developer &amp; systems builder</b><br>
   I build free, open-source tools that are secure, accessible and Hebrew/RTL-first —<br>
-  from an AI-powered Linux desktop to self-hosted digital signage and Android TV launchers.
+  from an AI-powered Linux desktop and self-hosted digital signage<br>
+  to a privacy-first dating platform, TV party games and a multilingual menu builder.
 </p>
 
 <p align="center">
@@ -63,6 +64,55 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 </tr>
 </table>
 
+## 🆕 New projects
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 💜 [NexaHeart](https://github.com/diamondrubinny/Dateos)
+The **free, open-source dating platform** anyone can run. Native iOS &amp; Android plus web from one codebase — privacy by design, safety built in. <sub>(formerly Dateos)</sub>
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/Dateos?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Dateos?style=flat-square)
+
+**[→ Learn more](https://github.com/diamondrubinny/Dateos#readme)**
+
+</td>
+<td width="50%" valign="top">
+
+### 🎮 [Gameu](https://github.com/diamondrubinny/Gameu)
+Turn any TV into a **party game console** that runs from a USB drive — players' phones are the controllers. No app install, just scan a QR code.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
+
+**[→ Play](https://github.com/diamondrubinny/Gameu#readme)**
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🍽️ [MenuAI](https://github.com/diamondrubinny/menuai)
+Designer-grade **menu builder** for restaurants, cafés &amp; bars — any language with full RTL, 16 themes, export to a single HTML file, PDF or QR code.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square)
+
+**[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)**
+
+</td>
+<td width="50%" valign="top">
+
+### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
+Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` → `שלום`. Chrome extension + Windows tray app, 100% local.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square)
+
+**[→ Download](https://github.com/diamondrubinny/keyflip/releases)**
+
+</td>
+</tr>
+</table>
+
 ## 🛠️ Developer utilities
 
 | Tool | What it does | |
@@ -79,6 +129,7 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
   <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white">
   <img alt="React" src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB">
+  <img alt="C#" src="https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white">
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white">
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress-21759B?style=flat-square&logo=wordpress&logoColor=white">
   <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white">
@@ -107,9 +158,11 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 <summary><b>🇮🇱 בעברית</b></summary>
 <div dir="rtl" align="right">
 
-**שלום, אני דיימונד רוביני — מפתח Full-Stack ובונה מערכות.
+**שלום, אני דיימונד רוביני — מפתח Full-Stack ובונה מערכות.**
 אני בונה כלים חינמיים בקוד פתוח, מאובטחים, נגישים ומותאמים לעברית ול־RTL מהיסוד:
-מערכת הפעלה עם AI מקומי, שילוט דיגיטלי בהתקנה עצמית, לאנצ'ר ל־Android TV ועוד.
+מערכת הפעלה עם AI מקומי, שילוט דיגיטלי בהתקנה עצמית, לאנצ'ר ל־Android TV,
+פלטפורמת היכרויות בקוד פתוח (NexaHeart), קונסולת משחקי מסיבה לטלוויזיה (Gameu),
+בונה תפריטים רב־לשוני (MenuAI), ותיקון טקסט שהוקלד בשפה הלא נכונה (KeyFlip).
 
 - ⭐ אהבתם פרויקט? תנו לו כוכב
 - 🐛 מצאתם באג? פתחו Issue בריפו הרלוונטי
