@@ -13,9 +13,9 @@ The Chrome extension is not signed by SignPath.
 ## Team roles
 | Role | Responsibility | Member |
 |---|---|---|
-| Author | Modifies source code directly | [GitHub username] |
-| Reviewer | Reviews changes from non-committers | [GitHub username] |
-| Approver | Approves every signing request manually | [GitHub username] |
+| Author | Modifies source code directly | diamondrubinny |
+| Reviewer | Reviews changes from non-committers | diamondrubinny |
+| Approver | Approves every signing request manually | diamondrubinny |
 
 All team members use multi-factor authentication on GitHub and SignPath.
 

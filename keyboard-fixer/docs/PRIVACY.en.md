@@ -1,6 +1,6 @@
 # KeyFlip Privacy Policy
 
-Last updated: [DATE] · Policy version 0.1 · Contact: [CONTACT EMAIL]
+Last updated: 2026-10-26 · Policy version 0.1 · Contact: d@rubinny.net
 
 > Technical draft; have it reviewed legally before wider distribution. (Hebrew version: [PRIVACY.md](PRIVACY.md))
 
