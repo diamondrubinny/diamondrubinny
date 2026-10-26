@@ -42,6 +42,14 @@ jobs:
         run: dotnet publish desktop/KeyFlip.App -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o out/framework-dependent
       - name: Publish (self-contained)
         run: dotnet publish desktop/KeyFlip.App -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o out/self-contained
+      - name: Build installer (Inno Setup)
+        run: |
+          choco install innosetup --no-progress -y
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DSourceExe=${{ github.workspace }}\out\self-contained\KeyFlip.exe" "/DAppVersion=0.1.0.${{ github.run_number }}" desktop\installer\KeyFlip.iss
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keyflip-windows-installer
+          path: desktop/installer/output/KeyFlip-Setup-x64.exe
       - uses: actions/upload-artifact@v4
         with:
           name: keyflip-windows-framework-dependent
@@ -67,6 +75,7 @@ jobs:
           (cd artifacts/keyflip-chrome-extension && zip -r ../../release/KeyFlip-chrome-extension.zip .)
           cp artifacts/keyflip-windows-self-contained/KeyFlip.exe release/KeyFlip-windows-x64-self-contained.exe
           cp artifacts/keyflip-windows-framework-dependent/KeyFlip.exe release/KeyFlip-windows-x64-needs-dotnet8.exe
+          cp artifacts/keyflip-windows-installer/KeyFlip-Setup-x64.exe release/KeyFlip-Setup-x64.exe
           (cd release && sha256sum * > SHA256SUMS.txt)
       - name: Publish pre-release
         env:
