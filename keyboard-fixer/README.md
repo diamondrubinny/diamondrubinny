@@ -4,7 +4,7 @@ Fixes text typed in the wrong keyboard layout between Hebrew and English: `akuo`
 A Chrome extension (Manifest V3) and a Windows tray app. Everything runs locally; no data leaves your computer.
 
 - License: [Apache-2.0](LICENSE)
-- **[Code signing policy](docs/CODE_SIGNING_POLICY.md)** · [Privacy policy](docs/PRIVACY.md) · [Accessibility statement (draft)](docs/ACCESSIBILITY.md)
+- **[Code signing policy](docs/CODE_SIGNING_POLICY.md)** · [Privacy policy](docs/PRIVACY.en.md) · [Accessibility statement (draft)](docs/ACCESSIBILITY.md)
 - Download: see the [Releases](../../releases) page (Windows `KeyFlip.exe`, Chrome extension ZIP).
 
 ---

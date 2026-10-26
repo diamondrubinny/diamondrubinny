@@ -26,7 +26,7 @@ All team members use multi-factor authentication on GitHub and SignPath.
 
 ## Privacy policy
 KeyFlip does not send any data to any server. It processes typed text locally and in memory only.
-See [PRIVACY.md](PRIVACY.md). The Windows app uses a keyboard hook solely to detect the end of a typed word;
+See [PRIVACY.en.md](PRIVACY.en.md) (English) and [PRIVACY.md](PRIVACY.md) (Hebrew). The Windows app uses a keyboard hook solely to detect the end of a typed word;
 it stores at most the current line (200 characters) in memory and never writes it to disk, logs or the network.
 
 ## System changes
