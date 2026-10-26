@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>KeyFlip promo</title>
+<style>
+  @font-face { font-family: 'Heebo'; src: url('assets/Heebo.ttf'); font-weight: 100 900; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b1220; }
+  body { font-family: 'Heebo', 'DejaVu Sans', sans-serif; color: #fff; position: relative; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(1200px 900px at 20% 10%, #1d4ed8 0%, transparent 60%), radial-gradient(1000px 900px at 90% 70%, #7c3aed 0%, transparent 55%), #0b1220; }
+  .dot { position: absolute; border-radius: 50%; background: rgba(255,255,255,.07); }
+  #logo { position: absolute; top: 90px; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 46px; letter-spacing: 1px; opacity: .95; direction: ltr; }
+  #logo b { color: #fbbf24; }
+  #headline { position: absolute; top: 200px; left: 60px; right: 60px; text-align: center; font-weight: 900; font-size: 104px; line-height: 1.08; text-shadow: 0 6px 30px rgba(0,0,0,.45); }
+  #headline em { font-style: normal; color: #fbbf24; }
+  #card { position: absolute; top: 590px; left: 70px; right: 70px; min-height: 330px; background: rgba(255,255,255,.96); color: #0f172a; border-radius: 48px; padding: 44px 50px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  #cardTitle { font-size: 34px; font-weight: 700; color: #64748b; margin-bottom: 18px; }
+  #field { display: flex; flex-wrap: wrap; gap: 0 28px; align-content: flex-start; min-height: 150px; font-weight: 800; font-size: 100px; line-height: 1.25; }
+  .w { display: inline-block; unicode-bidi: isolate; white-space: pre; }
+  .w.en { direction: ltr; } .w.he { direction: rtl; }
+  .w.bad { color: #dc2626; } .w.good { color: #059669; }
+  #caret { display: inline-block; width: 6px; height: 90px; background: #2563eb; vertical-align: middle; margin: 0 6px; }
+  #badge { position: absolute; top: 950px; left: 0; right: 0; display: flex; justify-content: center; }
+  #badge span { background: #059669; color: #fff; font-weight: 800; font-size: 44px; padding: 14px 40px; border-radius: 999px; box-shadow: 0 10px 30px rgba(5,150,105,.5); }
+  #chips { position: absolute; top: 640px; left: 90px; right: 90px; display: flex; flex-direction: column; gap: 26px; }
+  .chip { display: flex; align-items: center; gap: 28px; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.25); backdrop-filter: blur(6px); border-radius: 36px; padding: 28px 36px; font-weight: 800; font-size: 54px; }
+  .chip svg { flex: none; width: 76px; height: 76px; }
+  #cta { position: absolute; top: 640px; left: 0; right: 0; text-align: center; }
+  #cta .btn { display: inline-block; background: linear-gradient(180deg, #fbbf24, #f59e0b); color: #1f2937; font-weight: 900; font-size: 84px; padding: 26px 90px; border-radius: 999px; box-shadow: 0 16px 50px rgba(245,158,11,.55); }
+  #cta .sub { margin-top: 30px; font-size: 46px; font-weight: 700; color: #e2e8f0; }
+  #cta .small { margin-top: 12px; font-size: 38px; font-weight: 500; color: #cbd5e1; }
+  #caption { position: absolute; top: 1110px; left: 60px; right: 60px; text-align: center; font-weight: 900; font-size: 60px; line-height: 1.22; color: #fff; -webkit-text-stroke: 10px rgba(0,0,0,.85); paint-order: stroke fill; }
+  #char { position: absolute; left: 0; right: 0; bottom: 20px; height: 520px; display: flex; justify-content: center; }
+  #char svg { height: 520px; width: 520px; overflow: visible; }
+  #spark { position: absolute; inset: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="dots"></div>
+<div id="logo">Key<b>Flip</b></div>
+<div id="headline"></div>
+<div id="card"><div id="cardTitle"></div><div id="field"></div></div>
+<div id="badge"><span></span></div>
+<div id="chips"></div>
+<div id="cta"></div>
+<div id="caption"></div>
+<div id="char"></div>
+<svg id="spark" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+
+<script>
+/* ------------------------------------------------------------------ data */
+const DUR = 30;
+const NARRATION = [
+  [0.0, 3.2, 'כתבתם משפט שלם... ורק אז שמתם לב שהמקלדת באנגלית?'],
+  [3.2, 7.0, 'הכול יצא ג׳יבריש, ואתם צריכים למחוק ולהקליד הכול מחדש.'],
+  [7.0, 11.5, 'תכירו את KeyFlip, כלי חינמי שמתקן את זה בשבריר שנייה.'],
+  [11.5, 16.0, 'פשוט ממשיכים להקליד. בסוף כל מילה הוא מזהה את הטעות... ומתקן לבד.'],
+  [16.0, 20.5, 'וזה עובד גם הפוך: עברית באנגלית, ואנגלית בעברית.'],
+  [20.5, 25.0, 'הכול רץ אצלכם במחשב, בלי לשלוח מידע, והוא לא נוגע בשדות סיסמה.'],
+  [25.0, 30.0, 'תוסף לכרום ותוכנה לווינדוס, בקוד פתוח ובחינם. הקישור בתיאור!'],
+];
+const HEADLINES = [
+  [0, 3.2, 'כתבתם באנגלית<br>בלי לשים לב?'],
+  [3.2, 7.0, 'הכול יצא <em>ג׳יבריש</em>...'],
+  [7.0, 11.5, 'תכירו את<br><em>KeyFlip</em>'],
+  [11.5, 16.0, 'מקלידים.<br><em>הוא מתקן.</em>'],
+  [16.0, 20.5, 'עובד <em>בשני<br>הכיוונים</em>'],
+  [20.5, 25.0, 'פרטי<br>ו<em>בטוח</em>'],
+  [25.0, 30.0, 'חינם.<br><em>הורידו עכשיו</em>'],
+];
+// Scene 1: Hebrew typed on an English layout. Scene 2: English typed on a Hebrew layout.
+const S1 = { typed: ['akuo', 'nv', 'akunl'], fixed: ['שלום', 'מה', 'שלומך'], t0: 0.6, cps: 9, flipAt: 11.9, flipGap: 0.55 };
+const S2 = { typed: ['יקךךם', 'אישמלד'], fixed: ['hello', 'thanks'], t0: 16.3, cps: 7, flipAt: 18.6, flipGap: 0.7 };
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const back = (x) => { x = clamp(x); const c = 1.8; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+
+/* ------------------------------------------------------------ SFX events */
+const sfx = [];           // {t, type}
+const addSfx = (t, type) => sfx.push({ t: +t.toFixed(3), type });
+(function buildSfx() {
+  const typing = (S, startT, reps) => {
+    let n = 0;
+    S.typed.forEach((w, wi) => { for (let c = 0; c <= w.length; c++) { addSfx(S.t0 + (n / S.cps), 'click'); n++; } });
+  };
+  typing(S1); typing(S2);
+  S1.fixed.forEach((_, i) => addSfx(S1.flipAt + i * S1.flipGap, 'flip'));
+  addSfx(S1.flipAt + S1.fixed.length * S1.flipGap + 0.2, 'ding');
+  S2.fixed.forEach((_, i) => addSfx(S2.flipAt + i * S2.flipGap, 'flip'));
+  addSfx(S2.flipAt + S2.fixed.length * S2.flipGap + 0.2, 'ding');
+  addSfx(7.0, 'whoosh'); addSfx(7.3, 'pop');
+  [21.0, 22.3, 23.6].forEach((t) => addSfx(t, 'pop'));
+  addSfx(25.4, 'whoosh'); addSfx(26.0, 'ding');
+  addSfx(0.05, 'pop'); addSfx(3.2, 'buzz');
+})();
+window.SFX = sfx; window.DURATION = DUR;
+
+/* -------------------------------------------------------------- character */
+function charSVG() {
+  return `
+<svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient>
+    <linearGradient id="gSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93c5fd"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+  </defs>
+  <ellipse id="shadow" cx="200" cy="405" rx="130" ry="14" fill="rgba(0,0,0,.35)"/>
+  <g id="body">
+    <g id="legL"><rect x="130" y="320" width="34" height="62" rx="14" fill="#1e3a8a"/><ellipse cx="144" cy="386" rx="30" ry="14" fill="#0f172a"/></g>
+    <g id="legR"><rect x="236" y="320" width="34" height="62" rx="14" fill="#1e3a8a"/><ellipse cx="256" cy="386" rx="30" ry="14" fill="#0f172a"/></g>
+    <g id="armL" transform-origin="78 215"><path d="M78 215 Q30 230 22 280" stroke="#60a5fa" stroke-width="22" stroke-linecap="round" fill="none"/><circle cx="22" cy="284" r="24" fill="#fde68a"/></g>
+    <g id="armR" transform-origin="322 215"><path d="M322 215 Q370 230 378 280" stroke="#60a5fa" stroke-width="22" stroke-linecap="round" fill="none"/><circle cx="378" cy="284" r="24" fill="#fde68a"/></g>
+    <rect x="60" y="72" width="280" height="272" rx="62" fill="url(#gSide)"/>
+    <rect x="60" y="48" width="280" height="262" rx="62" fill="url(#gTop)" stroke="#bfdbfe" stroke-width="4"/>
+    <text x="200" y="104" text-anchor="middle" font-family="Heebo, DejaVu Sans" font-weight="900" font-size="38" fill="#2563eb">A ⇄ א</text>
+    <g id="eyes">
+      <g id="eyeL"><circle cx="146" cy="178" r="36" fill="#fff" stroke="#0f172a" stroke-width="5"/><circle id="pupL" cx="146" cy="178" r="16" fill="#0f172a"/><circle id="hiL" cx="152" cy="170" r="5" fill="#fff"/></g>
+      <g id="eyeR"><circle cx="254" cy="178" r="36" fill="#fff" stroke="#0f172a" stroke-width="5"/><circle id="pupR" cx="254" cy="178" r="16" fill="#0f172a"/><circle id="hiR" cx="260" cy="170" r="5" fill="#fff"/></g>
+      <rect id="lidL" x="106" y="138" width="80" height="80" rx="40" fill="#ffffff" opacity="0"/>
+    </g>
+    <path id="browL" d="M112 128 L176 124" stroke="#0f172a" stroke-width="9" stroke-linecap="round"/>
+    <path id="browR" d="M224 124 L288 128" stroke="#0f172a" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="106" cy="232" r="16" fill="#fda4af" opacity=".7"/><circle cx="294" cy="232" r="16" fill="#fda4af" opacity=".7"/>
+    <path id="mouth" d="M168 248 Q200 262 232 248" stroke="#0f172a" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path id="sweat" d="M312 120 Q326 150 312 164 Q298 150 312 120Z" fill="#60a5fa" opacity="0"/>
+  </g>
+</svg>`;
+}
+document.getElementById('char').innerHTML = charSVG();
+const $ = (id) => document.getElementById(id);
+
+const MOUTH = {
+  neutral: 'M168 250 Q200 258 232 250',
+  confused: 'M162 256 Q178 240 192 254 Q208 268 222 252 Q232 244 240 252',
+  happy: 'M158 238 Q200 300 242 238 Q200 252 158 238Z',
+  wow: 'M184 238 Q200 226 216 238 Q226 262 200 270 Q174 262 184 238Z',
+};
+
+function setMood(mood, t) {
+  const m = $('mouth');
+  m.setAttribute('d', MOUTH[mood]);
+  m.setAttribute('fill', mood === 'happy' || mood === 'wow' ? '#7f1d1d' : 'none');
+  const bl = $('browL'), br = $('browR');
+  if (mood === 'confused') {
+    bl.setAttribute('d', 'M112 138 L176 118'); br.setAttribute('d', 'M224 128 L288 120');
+  } else if (mood === 'happy') {
+    bl.setAttribute('d', 'M112 124 Q144 108 176 122'); br.setAttribute('d', 'M224 122 Q256 108 288 124');
+  } else if (mood === 'wow') {
+    bl.setAttribute('d', 'M112 116 Q144 100 176 112'); br.setAttribute('d', 'M224 112 Q256 100 288 116');
+  } else {
+    bl.setAttribute('d', 'M112 128 L176 124'); br.setAttribute('d', 'M224 124 L288 128');
+  }
+  $('sweat').setAttribute('opacity', mood === 'confused' ? (0.6 + 0.4 * Math.sin(t * 6)).toFixed(2) : '0');
+}
+
+function moodAt(t) {
+  if (t < 3.2) return 'neutral';
+  if (t < 7.0) return 'confused';
+  if (t < 11.5) return 'happy';
+  if (t < 16.0) return 'happy';
+  if (t < 20.5) return 'wow';
+  if (t < 25.0) return 'happy';
+  return 'wow';
+}
+
+function animateChar(t) {
+  const mood = moodAt(t);
+  setMood(mood, t);
+  const speed = mood === 'confused' ? 2.2 : 3.4;
+  const bounce = Math.abs(Math.sin(t * speed)) * (mood === 'confused' ? 8 : 22);
+  const excited = t > 25 ? Math.abs(Math.sin(t * 7)) * 36 : 0;
+  const squash = 1 - Math.abs(Math.cos(t * speed)) * 0.04;
+  const intro = t < 0.6 ? ease(t / 0.6) : 1;
+  const shake = mood === 'confused' ? Math.sin(t * 14) * 3 : 0;
+  $('body').setAttribute('transform', `translate(${shake},${-(bounce + excited)}) scale(1,${squash.toFixed(3)}) translate(0,${(1 - squash) * 360})`);
+  $('char').style.transform = `scale(${0.6 + 0.4 * intro})`;
+  $('char').style.transformOrigin = '50% 100%';
+  $('shadow').setAttribute('rx', (130 - (bounce + excited) * 0.6).toFixed(1));
+  // arms
+  const wave = Math.sin(t * 9) * 28;
+  let aL = Math.sin(t * speed) * 8, aR = -Math.sin(t * speed) * 8;
+  if (t >= 7.0 && t < 9.2) aR = -150 + wave;            // wave hello
+  if (mood === 'confused') { aL = -140 + Math.sin(t * 5) * 6; }  // hand on head
+  if (t >= 25) { aL = -150 + wave; aR = 150 - wave; }   // cheering
+  $('armL').setAttribute('transform', `rotate(${aL.toFixed(1)} 78 215)`);
+  $('armR').setAttribute('transform', `rotate(${aR.toFixed(1)} 322 215)`);
+  // blink
+  const blinkPhase = (t % 3.1);
+  const blink = blinkPhase > 3.0 ? 1 : 0;
+  ['eyeL', 'eyeR'].forEach((id) => $(id).setAttribute('transform', blink ? 'translate(0,178) scale(1,0.1) translate(0,-178)' : ''));
+  // pupils look toward the text field (up) or at the viewer
+  let px = 0, py = -7;
+  if (t >= 25) { px = 0; py = 2; }
+  else if (t >= 20.5 && t < 25) { px = Math.sin(t * 2) * 5; py = 2; }
+  else if (mood === 'confused') { px = Math.sin(t * 5) * 7; py = -6; }
+  ['pupL', 'hiL'].forEach((id, i) => { const base = [146, 152][i]; $(id).setAttribute('cx', base + px); $(id).setAttribute('cy', [178, 170][i] + py); });
+  ['pupR', 'hiR'].forEach((id, i) => { const base = [254, 260][i]; $(id).setAttribute('cx', base + px); $(id).setAttribute('cy', [178, 170][i] + py); });
+}
+
+/* ------------------------------------------------------------- word field */
+function renderField(S, t, lang) {
+  const field = $('field');
+  const total = S.typed.reduce((a, w) => a + w.length + 1, 0);
+  const shown = Math.floor(clamp((t - S.t0) * S.cps, 0, total));
+  let html = '';
+  let consumed = 0;
+  S.typed.forEach((w, i) => {
+    const n = clamp(shown - consumed, 0, w.length);
+    consumed += w.length + 1;
+    if (shown - (consumed - w.length - 1) <= 0) return;
+    const tf = S.flipAt + i * S.flipGap;
+    const p = clamp((t - tf) / 0.45);
+    let text = w.slice(0, n), cls = 'bad', scale = 1;
+    if (p > 0) {
+      scale = Math.abs(Math.cos(Math.PI * p));
+      if (p >= 0.5) { text = S.fixed[i]; cls = 'good'; }
+      else text = w;
+    }
+    const typedLang = lang === 'en-typed' ? 'en' : 'he';
+    const fixedLang = lang === 'en-typed' ? 'he' : 'en';
+    const cur = (p >= 0.5) ? fixedLang : typedLang;
+    html += `<span class="w ${cur} ${cls}" style="transform:scaleY(${scale.toFixed(3)})">${text}</span>`;
+  });
+  const done = t >= S.flipAt + S.typed.length * S.flipGap;
+  const caret = !done && Math.floor(t * 2) % 2 === 0 ? '<span id="caret"></span>' : '';
+  field.innerHTML = html + caret;
+}
+
+/* ----------------------------------------------------------------- chips */
+const ICON_CHECK = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#10b981"/><path d="M20 39 L33 52 L57 26" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_LOCK = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#6366f1"/><rect x="20" y="34" width="36" height="26" rx="6" fill="#fff"/><path d="M26 34 V28 a12 12 0 0 1 24 0 V34" stroke="#fff" stroke-width="7" fill="none"/></svg>';
+const ICON_PC = '<svg viewBox="0 0 76 76"><circle cx="38" cy="38" r="36" fill="#f59e0b"/><rect x="16" y="20" width="44" height="29" rx="4" fill="#fff"/><rect x="30" y="52" width="16" height="5" fill="#fff"/><rect x="22" y="56" width="32" height="4" rx="2" fill="#fff"/></svg>';
+const CHIPS = [[21.0, ICON_PC, 'הכול רץ במחשב שלכם'], [22.3, ICON_LOCK, 'לא נוגע בשדות סיסמה'], [23.6, ICON_CHECK, 'בקוד פתוח, בחינם']];
+
+/* ------------------------------------------------------------------- main */
+window.render = function (t) {
+  // background drift
+  const dots = $('dots');
+  if (!dots.childElementCount) {
+    for (let i = 0; i < 14; i++) { const d = document.createElement('div'); d.className = 'dot'; const s = 80 + (i * 37) % 180; d.style.width = d.style.height = s + 'px'; d.dataset.x = (i * 173) % 1000; d.dataset.y = (i * 311) % 1900; d.dataset.s = 0.4 + (i % 5) * 0.15; dots.appendChild(d); }
+  }
+  [...dots.children].forEach((d) => { d.style.left = (+d.dataset.x + Math.sin(t * d.dataset.s + +d.dataset.x) * 40) + 'px'; d.style.top = ((+d.dataset.y - t * 30 * d.dataset.s) % 2000 + 2000) % 2000 - 100 + 'px'; });
+
+  // headline
+  const h = HEADLINES.find(([a, b]) => t >= a && t < b) || HEADLINES[HEADLINES.length - 1];
+  const hp = ease((t - h[0]) / 0.35);
+  const hl = $('headline');
+  hl.innerHTML = h[2];
+  hl.style.opacity = hp.toFixed(2);
+  hl.style.transform = `translateY(${((1 - hp) * 40).toFixed(1)}px) scale(${(0.96 + 0.04 * hp).toFixed(3)})`;
+
+  // card / field
+  const showCard = t < 25;
+  $('card').style.display = showCard ? 'block' : 'none';
+  if (showCard) {
+    const inS2 = t >= 16.0;
+    if (t >= 20.5) { $('card').style.display = 'none'; }
+    else if (!inS2) {
+      $('cardTitle').textContent = t < 7.0 ? 'המקלדת הייתה באנגלית...' : 'KeyFlip מתקן אוטומטית';
+      $('field').style.direction = 'rtl';
+      renderField(S1, t, 'en-typed');
+    } else {
+      $('cardTitle').textContent = 'ולהפך: המקלדת הייתה בעברית...';
+      $('field').style.direction = 'ltr';
+      renderField(S2, t, 'he-typed');
+    }
+    const cp = t < 0.3 ? ease(t / 0.3) : (t >= 16.0 && t < 16.3 ? ease((t - 16) / 0.3) : 1);
+    $('card').style.opacity = cp.toFixed(2);
+    $('card').style.transform = `translateY(${((1 - cp) * 60).toFixed(1)}px)`;
+  }
+
+  // success badge
+  const fixedDone = (t >= S1.flipAt + S1.typed.length * S1.flipGap && t < 16.0) || (t >= S2.flipAt + S2.typed.length * S2.flipGap && t < 20.5);
+  const badge = $('badge');
+  badge.style.display = fixedDone ? 'flex' : 'none';
+  if (fixedDone) {
+    badge.querySelector('span').textContent = t < 16 ? 'תוקן! ✓' : 'Fixed! ✓';
+    const bt = t < 16 ? t - (S1.flipAt + S1.typed.length * S1.flipGap) : t - (S2.flipAt + S2.typed.length * S2.flipGap);
+    badge.style.transform = `scale(${back(bt / 0.4).toFixed(3)})`;
+  }
+
+  // chips
+  const chips = $('chips');
+  if (t >= 20.5 && t < 25.0) {
+    chips.style.display = 'flex';
+    chips.innerHTML = CHIPS.map(([t0, icon, text]) => {
+      const p = back((t - t0) / 0.45);
+      const o = clamp((t - t0) / 0.25);
+      return `<div class="chip" style="opacity:${o.toFixed(2)};transform:translateX(${((1 - p) * 300).toFixed(1)}px)">${icon}<span>${text}</span></div>`;
+    }).join('');
+  } else chips.style.display = 'none';
+
+  // CTA
+  const cta = $('cta');
+  if (t >= 25.0) {
+    const p = back((t - 25.2) / 0.5);
+    const pulse = 1 + Math.sin(t * 6) * 0.03;
+    cta.style.display = 'block';
+    cta.innerHTML = `<div class="btn" style="transform:scale(${(clamp(p, 0, 1.2) * pulse).toFixed(3)})">הורדה חינם</div>
+      <div class="sub">תוסף Chrome · תוכנה ל-Windows</div>
+      <div class="small">קוד פתוח · Apache-2.0 · הקישור בתיאור</div>`;
+  } else cta.style.display = 'none';
+
+  // caption (burned-in subtitles)
+  const cap = NARRATION.find(([a, b]) => t >= a && t < b);
+  $('caption').textContent = cap ? cap[2] : '';
+  $('caption').style.opacity = cap ? ease((t - cap[0]) / 0.2).toFixed(2) : 0;
+
+  // intro for logo
+  $('logo').style.opacity = ease(t / 0.4).toFixed(2);
+
+  animateChar(t);
+};
+window.render(0);
+</script>
+</body>
+</html>
