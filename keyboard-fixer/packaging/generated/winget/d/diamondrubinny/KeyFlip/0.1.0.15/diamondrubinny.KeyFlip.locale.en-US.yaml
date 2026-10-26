@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+PackageIdentifier: diamondrubinny.KeyFlip
+PackageVersion: 0.1.0.15
+PackageLocale: en-US
+Publisher: diamondrubinny
+PublisherUrl: https://github.com/diamondrubinny
+PackageName: KeyFlip
+PackageUrl: https://github.com/diamondrubinny/diamondrubinny
+License: Apache-2.0
+LicenseUrl: https://github.com/diamondrubinny/diamondrubinny/blob/HEAD/LICENSE
+ShortDescription: Fixes text typed in the wrong keyboard layout between Hebrew and English.
+Description: KeyFlip fixes Hebrew/English typing mistakes made in the wrong keyboard layout, automatically at the end of each word or on demand with Ctrl+Alt+Space. It runs locally, sends no data, and never touches password fields.
+Moniker: keyflip
+Tags:
+- hebrew
+- keyboard
+- layout
+- typing
+- productivity
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

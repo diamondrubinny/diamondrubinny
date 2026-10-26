@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>keyflip</id>
+    <version>0.1.0.15</version>
+    <title>KeyFlip</title>
+    <authors>diamondrubinny</authors>
+    <projectUrl>https://github.com/diamondrubinny/diamondrubinny</projectUrl>
+    <packageSourceUrl>https://github.com/diamondrubinny/diamondrubinny/tree/HEAD/keyboard-fixer/packaging</packageSourceUrl>
+    <licenseUrl>https://github.com/diamondrubinny/diamondrubinny/blob/HEAD/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/diamondrubinny/diamondrubinny</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/diamondrubinny/diamondrubinny/issues</bugTrackerUrl>
+    <tags>hebrew keyboard layout typing productivity</tags>
+    <summary>Fixes text typed in the wrong keyboard layout between Hebrew and English.</summary>
+    <description>KeyFlip fixes Hebrew/English typing mistakes made in the wrong keyboard layout, automatically at the end of each word or on demand with Ctrl+Alt+Space. It runs locally, sends no data, and never touches password fields.</description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
