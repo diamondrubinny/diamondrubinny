@@ -19,7 +19,12 @@ After the dedicated repo `diamondrubinny/keyflip` exists, pass it as the second 
 None of these catalogs is proven to count as "reputation" for SignPath; they mainly make installation easier and increase visibility.
 
 ## Scoop (own bucket, no approval)
-1. Create a public repo `scoop-keyflip`, copy `generated/scoop/bucket/keyflip.json` to `bucket/keyflip.json`, push.
+1. Create an empty public repo `scoop-keyflip` and push the ready-made content of `generated/scoop` (it already contains `bucket/keyflip.json` and a README):
+```bash
+git clone https://github.com/diamondrubinny/diamondrubinny.git && cd diamondrubinny && git checkout claude/typing-error-translation-addon-ae6d7h
+git subtree split --prefix=keyboard-fixer/packaging/generated/scoop -b scoop-bucket
+git push https://github.com/diamondrubinny/scoop-keyflip.git scoop-bucket:main
+```
 2. Users install with:
 ```powershell
 scoop bucket add keyflip https://github.com/diamondrubinny/scoop-keyflip

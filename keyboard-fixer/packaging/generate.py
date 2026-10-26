@@ -98,6 +98,20 @@ sc.mkdir(parents=True, exist_ok=True)
     }}
     '''))
 
+(out / 'scoop' / 'README.md').write_text(textwrap.dedent(f'''\
+    # scoop-keyflip
+
+    Scoop bucket for [KeyFlip](https://github.com/{repo}) – fixes text typed in the wrong keyboard layout (Hebrew/English).
+
+    ```powershell
+    scoop bucket add keyflip https://github.com/{owner}/scoop-keyflip
+    scoop install keyflip
+    ```
+
+    The app is currently not code-signed, so Windows SmartScreen or antivirus software may warn about it.
+    Review the source and the published SHA-256 before installing. Manifest version: {version}.
+    '''))
+
 # ---- Chocolatey (self-contained build downloaded at install time)
 ch = out / 'chocolatey' / 'keyflip'
 (ch / 'tools').mkdir(parents=True, exist_ok=True)
