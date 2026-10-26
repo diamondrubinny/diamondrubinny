@@ -1,18 +1,68 @@
 # KeyFlip
 
-Fixes text typed in the wrong keyboard layout between Hebrew and English: `akuo` → `שלום`, `יקךךם` → `hello`.
-A Chrome extension (Manifest V3) and a Windows tray app. Everything runs locally; no data leaves your computer.
+> Fixes text typed in the wrong keyboard layout between Hebrew and English, locally and without sending any data.
+> Chrome extension and Windows tray app.
 
-- License: [Apache-2.0](LICENSE)
+Typed `akuo` instead of `שלום`, or `יקךךם` instead of `hello`? KeyFlip detects the wrong layout at the end of each word and fixes it for you.
+
+[![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+
 - **[Code signing policy](docs/CODE_SIGNING_POLICY.md)** · [Privacy policy](docs/PRIVACY.en.md) · [Accessibility statement (draft)](docs/ACCESSIBILITY.md)
-- Download: see the [Releases](../../releases) page (Windows `KeyFlip.exe`, Chrome extension ZIP).
+- **Download:** see the [Releases](../../releases) page (Windows `KeyFlip.exe`, Chrome extension ZIP, SHA256 checksums).
+- Hebrew documentation: [below](#מתקן-טקסט-שהוקלד-בטעות-במקלדת-הלא-נכונה).
+
+## Features
+- **Automatic correction:** type a word and press space; if it looks like it was typed in the wrong layout it is replaced. `Ctrl+Z` undoes it (extension); `Ctrl+Alt+Space` right after a fix undoes it (Windows app).
+- **Manual conversion:** select text (or leave the caret after the words) and press `Alt+Shift+Z` (extension) or `Ctrl+Alt+Space` (Windows app).
+- **Offline and private:** dictionary-based detection runs entirely on your device. No network requests, no analytics, no cookies.
+- **Safe by default:** skips password, payment-card and one-time-code fields, code editors, words containing digits, `@`, URLs or capital letters; the Windows app also skips password managers, terminals and (by default) browsers.
+- **Accessible UI:** RTL Hebrew, keyboard operable, light/dark themes, automated WCAG 2.1 A/AA scan (axe-core).
+
+## Install
+**Windows app:** download `KeyFlip-windows-x64-self-contained.exe` from [Releases](../../releases) and run it (tray icon). The build is unsigned until the SignPath Foundation application is approved, so SmartScreen may warn: choose *More info → Run anyway*, or right-click the file → *Properties → Unblock*. Verify the file with `SHA256SUMS.txt`.
+
+**Chrome extension:** download and unzip `KeyFlip-chrome-extension.zip`, open `chrome://extensions`, enable *Developer mode*, choose *Load unpacked* and select the folder.
+
+Use either the extension or the app's "Also work in browsers" toggle, not both, to avoid double correction. In browsers the extension is recommended because it can detect password fields.
+
+## Build and test
+```bash
+# Chrome extension
+cd extension && npm install
+npm test && npm run typecheck && npm run build   # output in extension/dist
+npm run e2e      # real Chromium end-to-end tests (needs Playwright)
+npm run a11y     # axe-core accessibility scan
+npm run eval     # detection accuracy on held-out words
+
+# Windows app (Windows, .NET 8 SDK)
+dotnet test desktop/KeyFlip.Core.Tests
+dotnet publish desktop/KeyFlip.App -c Release -r win-x64
+```
+The layout mapping (`shared/mapping.json`) and test cases (`shared/test-cases.json`) are shared by both implementations.
+
+## How accurate is it?
+On held-out word lists: about 96-97% of wrongly typed words are recovered, and about 0.5% of rare valid words (names, slang) are corrected by mistake. Words of three letters or fewer are checked more strictly.
+
+## Privacy and transparency
+- The code makes no network requests. Typed text is processed in memory only and never written to disk or logs.
+- The Windows app uses a low-level keyboard hook only to detect the end of a word and keeps at most the current line (200 characters) in memory.
+- All binaries are built by GitHub Actions from this public source. Third-party data: see [NOTICE.md](NOTICE.md).
+- Status: early-stage open-source project; it does not yet have broad adoption.
+
+## Known limitations
+- Google Docs and other canvas-based editors may not support text replacement.
+- Windows apps running as administrator cannot receive input from a non-elevated app.
+- Detection is dictionary-based and not perfect; the manual shortcut is always available.
+
+## License
+[Apache-2.0](LICENSE). Word lists are derived from FrequencyWords (CC BY-SA); see [NOTICE.md](NOTICE.md).
 
 ---
 
 מתקן טקסט שהוקלד בטעות במקלדת הלא נכונה: `akuo` ← `שלום`, `יקךךם` ← `hello`.
 
-- `extension/` – תוסף Chrome (Manifest V3). **מוכן.**
-- `desktop/` – תוכנת Windows (Tray, .NET 8). נבנית ונבדקת ב-GitHub Actions (`.github/workflows/keyflip.yml`), הקבצים ב-Artifacts של הריצה.
+- `extension/` – תוסף Chrome (Manifest V3).
+- `desktop/` – תוכנת Windows (Tray, .NET 8). נבנית ונבדקת ב-GitHub Actions (`.github/workflows/ci.yml`).
 - `shared/` – מיפוי המקלדת המשותף (`mapping.json`) ומקרי בדיקה.
 
 ## תוסף Chrome
@@ -54,18 +104,9 @@ npm run a11y      # בדיקת נגישות אוטומטית (axe-core)
 - **דפדפנים:** אפשר להפעיל מתפריט המגש "פעל גם בדפדפנים" (שימושי בלי התוסף, או לשורת הכתובת). אל תפעילו יחד עם התוסף כדי למנוע תיקון כפול. בדפדפן אין זיהוי שדות סיסמה.
 - **בנייה מקומית (Windows):** `dotnet test desktop/KeyFlip.Core.Tests` ואז `dotnet publish desktop/KeyFlip.App -c Release -r win-x64`.
 - **מגבלות:** לא פועלת בחלונות שרצים כמנהל; תוכנות שחוסמות הקלדה מדומה יפעלו חלקית; ההמרה הידנית של טקסט מסומן משתמשת בלוח (ומשחזרת טקסט בלבד); אנטי-וירוס עלול לסמן תוכנה עם keyboard hook (False Positive), לכן מומלץ חתימה דיגיטלית לפני הפצה.
-- **טרם נבדקה ידנית על מחשב Windows אמיתי** – הקומפילציה והבדיקות האוטומטיות של הליבה עברו ב-CI בלבד.
 
 ## מסמכים (טיוטות לבדיקה משפטית/מקצועית)
 `docs/PRIVACY.md`, `docs/TERMS.md`, `docs/ACCESSIBILITY.md`, `docs/STORE_LISTING.md`, `docs/PRODUCTION_CHECKLIST.md`.
 
 ## רישיון
 Apache-2.0. מילוני הזיהוי נגזרים מנתונים ברישיון CC BY-SA (ראו `NOTICE.md`).
-
-## העברה לריפו עצמאי (`keyflip`)
-```bash
-git clone https://github.com/diamondrubinny/diamondrubinny.git && cd diamondrubinny
-git checkout claude/typing-error-translation-addon-ae6d7h
-git subtree split --prefix=keyboard-fixer -b keyflip-standalone
-git push https://github.com/diamondrubinny/keyflip.git keyflip-standalone:main
-```
