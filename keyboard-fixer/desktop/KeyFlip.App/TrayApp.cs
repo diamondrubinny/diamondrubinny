@@ -137,14 +137,43 @@ internal sealed class TrayApp : ApplicationContext
         timer.Start();
     }
 
+    // Wrong-layout typing tends to continue: after a fix, short words are fixed more readily for a while.
+    private const double StreakWindowSeconds = 20;
+    private int _streakCount;
+    private DateTime _streakAt = DateTime.MinValue;
+    private IntPtr _streakWindow;
+
+    private int CurrentStreak(IntPtr window) =>
+        window == _streakWindow && (DateTime.UtcNow - _streakAt).TotalSeconds < StreakWindowSeconds ? _streakCount : 0;
+
+    private void NoteResult(IntPtr window, bool fixedWord, int tokenLength)
+    {
+        if (fixedWord)
+        {
+            _streakCount = CurrentStreak(window) + 1;
+            _streakWindow = window;
+            _streakAt = DateTime.UtcNow;
+        }
+        else if (tokenLength >= 3)
+        {
+            _streakCount = 0;
+            _streakWindow = window;
+            _streakAt = DateTime.UtcNow;
+        }
+    }
+
     private async Task TryAutoFixAsync(WordEvent e)
     {
         try
         {
             if (_monitor.Epoch != e.Epoch || WindowInfo.Foreground != e.Window) return; // the user kept typing
 
-            Fix? fix = _detector.FixToken(e.Word);
-            if (fix is null) return;
+            Fix? fix = _detector.FixToken(e.Word, CurrentStreak(e.Window));
+            if (fix is null)
+            {
+                NoteResult(e.Window, fixedWord: false, e.Word.Length);
+                return;
+            }
 
             if (_settings.IsProcessIgnored(WindowInfo.ProcessName(e.Window))) return;
 
@@ -158,10 +187,43 @@ internal sealed class TrayApp : ApplicationContext
 
             string original = e.Word + " ";
             string retyped = fix.Replacement + e.Word[fix.Consumed..] + " ";
-            TextInjector.Backspace(original.Length);
-            TextInjector.Type(retyped);
-            _monitor.Line.ReplaceTail(original.Length, retyped);
-            _lastFix = new LastFix(original, retyped, _monitor.Epoch, e.Window, DateTime.UtcNow);
+
+            // Short words typed just before this one in the same layout (e.g. "kt" = "לא") are repaired too.
+            // Conversions never change the length, so the whole stretch is retyped in one go.
+            string line = _monitor.Line.Text;
+            int wordStart = line.Length - original.Length;
+            string segment = original;
+            string newSegment = retyped;
+            if (wordStart >= 0 && line.EndsWith(original, StringComparison.Ordinal))
+            {
+                var edits = new List<(int Start, string Token, Fix Fix)>();
+                foreach (var (start, token) in LineBuffer.PreviousShortTokens(line, wordStart))
+                {
+                    Fix? retro = _detector.FixToken(token, 1);
+                    if (retro is null) break;
+                    edits.Add((start, token, retro));
+                }
+                if (edits.Count > 0)
+                {
+                    int segStart = edits[^1].Start; // nearest first, so the last edit is the earliest
+                    var sb = new System.Text.StringBuilder(line[segStart..]);
+                    foreach (var (start, token, retro) in edits)
+                    {
+                        sb.Remove(start - segStart, token.Length);
+                        sb.Insert(start - segStart, retro.Replacement + token[retro.Consumed..]);
+                    }
+                    sb.Remove(wordStart - segStart, original.Length);
+                    sb.Insert(wordStart - segStart, retyped);
+                    segment = line[segStart..];
+                    newSegment = sb.ToString();
+                }
+            }
+
+            TextInjector.Backspace(segment.Length);
+            TextInjector.Type(newSegment);
+            _monitor.Line.ReplaceTail(segment.Length, newSegment);
+            _lastFix = new LastFix(segment, newSegment, _monitor.Epoch, e.Window, DateTime.UtcNow);
+            NoteResult(e.Window, fixedWord: true, e.Word.Length);
         }
         catch (Exception)
         {

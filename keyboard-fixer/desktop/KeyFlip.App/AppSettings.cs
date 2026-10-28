@@ -14,7 +14,15 @@ internal sealed class AppSettings
         "keepass", "keepassxc", "1password", "bitwarden", "lastpass", "dashlane",
         "windowsterminal", "cmd", "powershell", "pwsh", "conhost", "mintty", "putty",
         "mstsc", "vmconnect", "teamviewer", "anydesk",
+        // Code editors and IDEs: identifiers and abbreviations there must not be "corrected".
+        "code", "code - insiders", "cursor", "devenv", "rider64", "idea64", "pycharm64", "webstorm64",
+        "clion64", "goland64", "phpstorm64", "studio64", "sublime_text", "atom",
     };
+
+    /// <summary>Bumped when the default ignore list grows; older settings files get the new defaults added once.</summary>
+    private const int CurrentVersion = 2;
+
+    public int Version { get; set; }
 
     /// <summary>Window classes where Ctrl+C means "interrupt", so the clipboard path is never used.</summary>
     public static readonly string[] ConsoleWindowClasses =
@@ -43,6 +51,15 @@ internal sealed class AppSettings
                 {
                     // Older files listed browsers here; they are governed by IncludeBrowsers now.
                     loaded.IgnoredProcesses.RemoveAll(p => BrowserProcesses.Contains(p, StringComparer.OrdinalIgnoreCase));
+                    if (loaded.Version < CurrentVersion)
+                    {
+                        foreach (string name in DefaultIgnoredProcesses)
+                        {
+                            if (!loaded.IgnoredProcesses.Contains(name, StringComparer.OrdinalIgnoreCase)) loaded.IgnoredProcesses.Add(name);
+                        }
+                        loaded.Version = CurrentVersion;
+                        loaded.Save();
+                    }
                     return loaded;
                 }
             }
@@ -51,7 +68,7 @@ internal sealed class AppSettings
         {
             // Corrupt settings fall back to defaults.
         }
-        return new AppSettings();
+        return new AppSettings { Version = CurrentVersion };
     }
 
     public void Save()
