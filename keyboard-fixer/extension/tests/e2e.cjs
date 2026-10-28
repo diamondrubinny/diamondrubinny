@@ -25,7 +25,8 @@ const PAGE = `<!doctype html><meta charset=utf-8><body>
   await page.goto(url);
   await page.waitForTimeout(500);
 
-  const type = async (sel, text) => { await page.click(sel); await page.keyboard.type(text, { delay: 15 }); await page.waitForTimeout(400); };
+  await page.click('#ta'); await page.waitForTimeout(2500); // focus warms up the background worker
+  const type = async (sel, text) => { await page.click(sel); await page.waitForTimeout(150); await page.keyboard.type(text, { delay: 15 }); await page.waitForTimeout(500); };
   const val = (sel) => page.$eval(sel, (e) => e.value ?? e.textContent);
   const results = [];
   const check = async (name, fn) => { try { await fn(); results.push(['PASS', name]); } catch (e) { results.push(['FAIL', name, e.message.split('\n').slice(0,6).join(' ')]); } };
@@ -52,7 +53,12 @@ const PAGE = `<!doctype html><meta charset=utf-8><body>
     await page.waitForTimeout(300);
     assert.equal(await val('#pw'), 'akuo ' + 'akuo');
   });
-  await check('contenteditable: en->he', async () => { await type('#ce', 'akuo tck '); assert.equal((await val('#ce')).replace(/ /g, ' '), 'שלום אבל '); });
+  await check('retro-fix: short word before a fixed word', async () => { await page.fill('#inp', ''); await type('#inp', 'kt tck '); assert.equal(await val('#inp'), 'לא אבל '); });
+  await check('streak: short word after a fixed word', async () => { await page.fill('#inp', ''); await type('#inp', 'tck kt zv '); assert.equal(await val('#inp'), 'אבל לא זה '); });
+  await check('model path: word not in dictionary', async () => { await page.fill('#inp', ''); await type('#inp', 'akunl '); assert.equal(await val('#inp'), 'שלומך '); });
+  await check('short word alone is left alone', async () => { await page.fill('#inp', ''); await type('#inp', 'hello there kt '); assert.equal(await val('#inp'), 'hello there kt '); });
+  await check('contenteditable: retro-fix', async () => { await page.evaluate(() => { document.querySelector('#ce').textContent = ''; }); await type('#ce', 'kt tck '); assert.equal((await val('#ce')).replace(/\u00a0/g, ' '), 'לא אבל '); });
+  await check('contenteditable: en->he', async () => { await page.evaluate(() => { document.querySelector('#ce').textContent = ''; }); await type('#ce', 'akuo tck '); assert.equal((await val('#ce')).replace(/ /g, ' '), 'שלום אבל '); });
   await check('manual shortcut path: convert message', async () => {
     await page.fill('#inp', 'tk,');
     await page.click('#inp'); await page.keyboard.press('End');
