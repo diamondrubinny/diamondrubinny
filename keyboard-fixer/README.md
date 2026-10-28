@@ -41,7 +41,7 @@ dotnet publish desktop/KeyFlip.App -c Release -r win-x64
 The layout mapping (`shared/mapping.json`) and test cases (`shared/test-cases.json`) are shared by both implementations.
 
 ## How accurate is it?
-On held-out word lists: about 96-97% of wrongly typed words are recovered, and about 0.5% of rare valid words (names, slang) are corrected by mistake. Words of three letters or fewer are checked more strictly.
+Measured on words the detector had never seen: about **91%** of wrongly typed Hebrew and **88%** of wrongly typed English words (5+ letters) are recovered, and roughly **0.8%** of rare valid words are corrected by mistake. Short words are the hard part. Details and method: [docs/ACCURACY.md](docs/ACCURACY.md).
 
 ## Privacy and transparency
 - The code makes no network requests. Typed text is processed in memory only and never written to disk or logs.
@@ -52,7 +52,7 @@ On held-out word lists: about 96-97% of wrongly typed words are recovered, and a
 ## Known limitations
 - Google Docs and other canvas-based editors may not support text replacement.
 - Windows apps running as administrator cannot receive input from a non-elevated app.
-- Detection is dictionary-based and not perfect; the manual shortcut is always available.
+- Detection is statistical and not perfect (a lone two-letter word is never changed); the manual shortcut is always available.
 
 ## License
 [Apache-2.0](LICENSE). Word lists are derived from FrequencyWords (CC BY-SA); see [NOTICE.md](NOTICE.md).
@@ -92,7 +92,7 @@ npm run a11y      # בדיקת נגישות אוטומטית (axe-core)
 
 ### מגבלות
 - Google Docs ועורכי canvas אחרים עלולים לא לתמוך.
-- הזיהוי מבוסס מילון (~96% שחזור, ~0.5% תיקון שגוי במילים נדירות). מילים קצרות (3 אותיות) נבדקות בקפדנות יותר.
+- הזיהוי מבוסס מילונים ומודל סטטיסטי: כ-91% שחזור של מילים שלא היו במילון ובאורך 5+ אותיות, וכ-0.8% תיקון שגוי של מילים נדירות. מילה קצרה בודדת לא משתנה. פירוט ושיטת המדידה: `docs/ACCURACY.md`.
 
 > מסמכי מדיניות פרטיות והצהרת נגישות הם טיוטות הדורשות בדיקה מקצועית לפני פרסום.
 
