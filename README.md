@@ -151,6 +151,7 @@ Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` �
 - 🐛 Found a bug or have an idea? **[Open an issue](https://github.com/diamondrubinny/freescreensign/issues)** in the relevant repo
 - 🔀 Pull requests are welcome — check each repo's README for contribution notes
 - 💼 Need a custom system, website or integration? → **[rubinny.co.il](https://rubinny.co.il)**
+- 🤝 Want a **commercial license** or to **buy the rights** to one of my projects? Send your proposal to **[d@rubinny.net](mailto:d@rubinny.net)** — include who you are, the project, intended use and your offer
 
 ---
 
@@ -167,6 +168,7 @@ Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` �
 - ⭐ אהבתם פרויקט? תנו לו כוכב
 - 🐛 מצאתם באג? פתחו Issue בריפו הרלוונטי
 - 💼 צריכים מערכת, אתר או אינטגרציה בהתאמה אישית? → [rubinny.co.il](https://rubinny.co.il)
+- 🤝 מעוניינים ברישיון מסחרי או ברכישת הזכויות באחד הפרויקטים? שלחו הצעה ל-[d@rubinny.net](mailto:d@rubinny.net) — כולל פרטי קשר, הפרויקט, אופן השימוש וההצעה שלכם
 
 </div>
 </details>
