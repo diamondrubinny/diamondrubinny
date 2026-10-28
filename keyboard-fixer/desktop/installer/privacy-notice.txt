@@ -1,0 +1,12 @@
+KeyFlip - privacy notice
+
+KeyFlip fixes text typed in the wrong keyboard layout (Hebrew/English).
+
+- It uses a Windows keyboard hook only to detect the end of a typed word.
+- It keeps at most the current line (200 characters) in memory. Nothing is written to disk, logged or sent over the network.
+- It does not act in password fields, password managers, terminals or (by default) web browsers.
+- The only system change is the optional "Start KeyFlip when I sign in" entry (HKCU\...\Run). Settings are stored in %APPDATA%\KeyFlip.
+
+Uninstall: Settings > Apps > Installed apps > KeyFlip > Uninstall.
+
+KeyFlip is open source (Apache-2.0).
