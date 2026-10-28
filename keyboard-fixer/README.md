@@ -19,7 +19,9 @@ Typed `akuo` instead of `שלום`, or `יקךךם` instead of `hello`? KeyFlip 
 - **Accessible UI:** RTL Hebrew, keyboard operable, light/dark themes, automated WCAG 2.1 A/AA scan (axe-core).
 
 ## Install
-**Windows app:** download `KeyFlip-windows-x64-self-contained.exe` from [Releases](../../releases) and run it (tray icon). The build is unsigned until the SignPath Foundation application is approved, so SmartScreen may warn: choose *More info → Run anyway*, or right-click the file → *Properties → Unblock*. Verify the file with `SHA256SUMS.txt`.
+**Windows app (installer):** download `KeyFlip-Setup-x64.exe` from [Releases](../../releases) and run it. It installs for your user without administrator rights, can start KeyFlip with Windows, and adds an entry to *Settings → Apps → Installed apps* so you can uninstall it cleanly. A portable build (`KeyFlip-windows-x64-self-contained.exe`) is also available: run it directly (tray icon). The build is unsigned until the SignPath Foundation application is approved, so SmartScreen may warn: choose *More info → Run anyway*, or right-click the file → *Properties → Unblock*. Verify the files with `SHA256SUMS.txt`.
+
+**Uninstall:** *Settings → Apps → Installed apps → KeyFlip → Uninstall*. The uninstaller stops the app, removes the files and the startup entry, and asks whether to delete your settings (`%APPDATA%\KeyFlip`). For the portable build: exit from the tray menu, untick *Start with Windows*, and delete the file and the settings folder.
 
 **Chrome extension:** download and unzip `KeyFlip-chrome-extension.zip`, open `chrome://extensions`, enable *Developer mode*, choose *Load unpacked* and select the folder.
 
@@ -102,6 +104,7 @@ npm run a11y      # בדיקת נגישות אוטומטית (axe-core)
 - **ידני:** `Ctrl+Alt+Space` ממיר את הטקסט המסומן, או את המילים האחרונות שהוקלדו בשורה.
 - **פרטיות:** משתמשת ב-keyboard hook כדי לזהות סוף מילה. שומרת בזיכרון רק את השורה הנוכחית (עד 200 תווים), ללא דיסק/לוג/רשת. כברירת מחדל לא פועלת בדפדפנים (התוסף מטפל בהם), מנהלי סיסמאות, טרמינלים ושדות סיסמה קלאסיים. רשימת התוכנות המוחרגות: `%APPDATA%\KeyFlip\settings.json`.
 - **דפדפנים:** אפשר להפעיל מתפריט המגש "פעל גם בדפדפנים" (שימושי בלי התוסף, או לשורת הכתובת). אל תפעילו יחד עם התוסף כדי למנוע תיקון כפול. בדפדפן אין זיהוי שדות סיסמה.
+- **התקנה והסרה:** `KeyFlip-Setup-x64.exe` מתקין למשתמש הנוכחי בלי הרשאות מנהל, ומאפשר הסרה מ-"הגדרות ← אפליקציות". ההסרה מסירה גם את ההפעלה האוטומטית ושואלת אם למחוק את ההגדרות. הגרסה הניידת (`...self-contained.exe`) מוסרת ידנית: יציאה מתפריט המגש ומחיקת הקובץ ותיקיית `%APPDATA%\KeyFlip`.
 - **בנייה מקומית (Windows):** `dotnet test desktop/KeyFlip.Core.Tests` ואז `dotnet publish desktop/KeyFlip.App -c Release -r win-x64`.
 - **מגבלות:** לא פועלת בחלונות שרצים כמנהל; תוכנות שחוסמות הקלדה מדומה יפעלו חלקית; ההמרה הידנית של טקסט מסומן משתמשת בלוח (ומשחזרת טקסט בלבד); אנטי-וירוס עלול לסמן תוכנה עם keyboard hook (False Positive), לכן מומלץ חתימה דיגיטלית לפני הפצה.
 

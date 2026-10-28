@@ -6,7 +6,7 @@
 Free code signing provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
 
 ## What is signed
-Only the Windows executable `KeyFlip.exe`, built from this repository by the public GitHub Actions workflow
+The Windows executable `KeyFlip.exe` and the installer `KeyFlip-Setup-x64.exe`, built from this repository by the public GitHub Actions workflow
 (`.github/workflows/keyflip.yml`). Product name (`KeyFlip`) and version are enforced identically on every build.
 The Chrome extension is not signed by SignPath.
 
@@ -34,8 +34,10 @@ The only system change KeyFlip can make is the optional "Start with Windows" ent
 `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, controlled by a checkbox in the tray menu. Settings are stored in `%APPDATA%\KeyFlip`.
 
 ## Uninstallation
-KeyFlip is a portable executable: exit it from the tray menu, untick "Start with Windows", then delete the file and `%APPDATA%\KeyFlip`.
-(An installer with an uninstaller is planned and required before wider distribution.)
+KeyFlip ships with an installer (`KeyFlip-Setup-x64.exe`, built with Inno Setup in the same public workflow) that registers an
+uninstaller in *Settings → Apps → Installed apps*. Uninstalling stops the app, removes its files and the optional startup entry
+(`HKCU\Software\Microsoft\Windows\CurrentVersion\Run`), and asks whether to delete settings in `%APPDATA%\KeyFlip`.
+A portable build is also published; it is removed by exiting the app and deleting the file and the settings folder.
 
 ## Third-party components and data
 See [NOTICE.md](../NOTICE.md) (word lists derived from FrequencyWords, CC BY-SA).

@@ -3,7 +3,7 @@
 `generate.py` builds manifests for a published release (hashes are read from the release's `SHA256SUMS.txt`):
 
 ```bash
-python3 generate.py keyflip-v0.1.0-15 diamondrubinny/diamondrubinny   # writes packaging/generated/
+python3 generate.py keyflip-v0.1.0-24 diamondrubinny/diamondrubinny   # writes packaging/generated/
 ```
 Re-run it for every new release (tags look like `keyflip-v<major.minor.patch>-<build>`; the package version becomes `<major.minor.patch>.<build>`).
 After the dedicated repo `diamondrubinny/keyflip` exists, pass it as the second argument.
@@ -34,8 +34,8 @@ scoop install keyflip
 ## winget
 ```powershell
 winget settings --enable LocalManifestFiles        # administrator shell, once
-winget validate --manifest generated\winget\d\diamondrubinny\KeyFlip\0.1.0.15
-winget install  --manifest generated\winget\d\diamondrubinny\KeyFlip\0.1.0.15
+winget validate --manifest generated\winget\d\diamondrubinny\KeyFlip\0.1.0.24
+winget install  --manifest generated\winget\d\diamondrubinny\KeyFlip\0.1.0.24
 ```
 If both pass, submit with [wingetcreate](https://github.com/microsoft/winget-create) (`wingetcreate submit`) or a pull request to `microsoft/winget-pkgs` (read `doc/README.md` and `doc/FirstContribution.md` there). Expect automated validation and possibly manual review; Microsoft may refuse a package.
 
@@ -45,6 +45,6 @@ cd generated\chocolatey\keyflip
 choco pack
 choco install keyflip -s . -y          # local test
 choco apikey --key <your key from community.chocolatey.org> --source https://push.chocolatey.org/
-choco push keyflip.0.1.0.15.nupkg --source https://push.chocolatey.org/
+choco push keyflip.0.1.0.24.nupkg --source https://push.chocolatey.org/
 ```
 Requires a free account on community.chocolatey.org. Fix every moderation finding and re-upload the same version. Add a short `VERIFICATION.txt` only if you embed binaries in the package (this package downloads the release asset instead).

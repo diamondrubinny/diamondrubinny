@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.6.0.schema.json
 PackageIdentifier: diamondrubinny.KeyFlip
-PackageVersion: 0.1.0.15
+PackageVersion: 0.1.0.24
 InstallerType: portable
 Commands:
 - keyflip
@@ -9,7 +9,7 @@ Dependencies:
   - PackageIdentifier: Microsoft.DotNet.DesktopRuntime.8
 Installers:
 - Architecture: x64
-  InstallerUrl: https://github.com/diamondrubinny/diamondrubinny/releases/download/keyflip-v0.1.0-15/KeyFlip-windows-x64-needs-dotnet8.exe
-  InstallerSha256: B216944C916D3461C6142A1AD6138CDD7F91937879175A30638758D39FFAD0A8
+  InstallerUrl: https://github.com/diamondrubinny/diamondrubinny/releases/download/keyflip-v0.1.0-24/KeyFlip-windows-x64-needs-dotnet8.exe
+  InstallerSha256: E09616D3A133EBA61395B171DD7E0D3B47CD5EE4193A78BAAEFD36D69301348E
 ManifestType: installer
 ManifestVersion: 1.6.0

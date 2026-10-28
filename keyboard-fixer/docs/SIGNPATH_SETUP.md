@@ -11,7 +11,7 @@ Status: **not applied yet.** Facts below come from https://signpath.org/terms (c
 | Functionality documented on download page | ✅ README (Hebrew); ⬜ add an English README section |
 | Not a hacking tool | ✅ the keyboard hook only detects word boundaries; no exploitation or evasion |
 | Privacy statement, no undisclosed data sending | ✅ no network access at all |
-| System changes warned, uninstall offered | ⚠ portable app only; add an installer with uninstaller |
+| System changes warned, uninstall offered | ✅ Inno Setup installer with uninstaller and privacy notice (`desktop/installer/`); ⚠ not manually tested on Windows yet |
 | MFA for all members on GitHub and SignPath | ⬜ the owner enables it |
 | "Code signing policy" on home and download page | ✅ `docs/CODE_SIGNING_POLICY.md`; ⬜ link it from the README |
 | Verifiable **reputation** for executables | ⚠ **main risk.** A brand-new project with no users or history may be declined. Acceptance is discretionary. |

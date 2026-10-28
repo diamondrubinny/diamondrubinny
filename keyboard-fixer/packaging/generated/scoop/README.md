@@ -8,4 +8,4 @@ scoop install keyflip
 ```
 
 The app is currently not code-signed, so Windows SmartScreen or antivirus software may warn about it.
-Review the source and the published SHA-256 before installing. Manifest version: 0.1.0.15.
+Review the source and the published SHA-256 before installing. Manifest version: 0.1.0.24.

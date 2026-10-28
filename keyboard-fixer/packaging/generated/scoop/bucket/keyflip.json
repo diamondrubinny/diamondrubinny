@@ -1,10 +1,10 @@
 {
-    "version": "0.1.0.15",
+    "version": "0.1.0.24",
     "description": "Fixes text typed in the wrong keyboard layout between Hebrew and English.",
     "homepage": "https://github.com/diamondrubinny/diamondrubinny",
     "license": "Apache-2.0",
-    "url": "https://github.com/diamondrubinny/diamondrubinny/releases/download/keyflip-v0.1.0-15/KeyFlip-windows-x64-self-contained.exe#/KeyFlip.exe",
-    "hash": "61d629f26d3bdeffc052200e1c03756516274072221f4a43544fe3213aef9d8a",
+    "url": "https://github.com/diamondrubinny/diamondrubinny/releases/download/keyflip-v0.1.0-24/KeyFlip-windows-x64-self-contained.exe#/KeyFlip.exe",
+    "hash": "6b3b810a17e8dd310037286ae4f44e220c64273cdca0f64ab73711f1cf93782b",
     "bin": "KeyFlip.exe",
     "shortcuts": [
         ["KeyFlip.exe", "KeyFlip"]
