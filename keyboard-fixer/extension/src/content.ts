@@ -40,8 +40,8 @@ const noteResult = (el: Element | null, fixed: boolean, tokenLength: number): vo
   else if (tokenLength >= 3) streakState = { el, count: 0, at: Date.now() };
 };
 
-const askBackground = (token: string, streak: number): Promise<Fix | null> =>
-  chrome.runtime.sendMessage({ type: 'fix', token, streak }).then(
+const askBackground = (token: string, streak: number, sandwich = false): Promise<Fix | null> =>
+  chrome.runtime.sendMessage({ type: 'fix', token, streak, sandwich }).then(
     (r: Fix | null) => r,
     () => null,
   );
@@ -73,7 +73,8 @@ async function fixTextField(el: TextField): Promise<void> {
   const token = value.slice(tokenStart, tokenEnd);
   if (!token) return;
 
-  const fix = await askBackground(token, currentStreak(el));
+  const streakBefore = currentStreak(el);
+  const fix = await askBackground(token, streakBefore);
   noteResult(el, fix !== null, token.length);
   if (!fix || document.activeElement !== el) return;
   // The user may have kept typing while we waited; only apply if the token is untouched.
@@ -84,7 +85,7 @@ async function fixTextField(el: TextField): Promise<void> {
     replaceInTextField(el, tokenStart, tokenStart + fix.consumed, fix.replacement);
     // Same-length replacements: earlier offsets stay valid, so short words before this one can be repaired too.
     for (const prev of previousShortTokens(value, tokenStart)) {
-      const f = await askBackground(prev.token, 1);
+      const f = await askBackground(prev.token, 1, streakBefore >= 1);
       if (!f || el.value.slice(prev.start, prev.start + prev.token.length) !== prev.token) break;
       replaceInTextField(el, prev.start, prev.start + f.consumed, f.replacement);
     }
@@ -109,7 +110,8 @@ async function fixContentEditable(): Promise<void> {
   const token = text.slice(tokenStart, tokenEnd);
   if (!token) return;
 
-  const fix = await askBackground(token, currentStreak(host));
+  const streakBefore = currentStreak(host);
+  const fix = await askBackground(token, streakBefore);
   noteResult(host, fix !== null, token.length);
   if (!fix || !node.isConnected || node.data.slice(tokenStart, tokenEnd) !== token) return;
   const after = window.getSelection();
@@ -118,7 +120,7 @@ async function fixContentEditable(): Promise<void> {
   try {
     if (replaceInTextNode(node, tokenStart, tokenStart + fix.consumed, fix.replacement)) {
       for (const prev of previousShortTokens(text, tokenStart)) {
-        const f = await askBackground(prev.token, 1);
+        const f = await askBackground(prev.token, 1, streakBefore >= 1);
         if (!f || !node.isConnected || node.data.slice(prev.start, prev.start + prev.token.length) !== prev.token) break;
         replaceInTextNode(node, prev.start, prev.start + f.consumed, f.replacement);
       }

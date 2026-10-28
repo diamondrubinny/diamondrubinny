@@ -10,6 +10,7 @@ interface FixRequest {
   type: 'fix';
   token: string;
   streak?: number;
+  sandwich?: boolean;
 }
 
 chrome.runtime.onMessage.addListener((msg: unknown, sender, sendResponse) => {
@@ -27,7 +28,7 @@ chrome.runtime.onMessage.addListener((msg: unknown, sender, sendResponse) => {
   void (async () => {
     const settings = await loadSettings();
     if (!settings.auto) return sendResponse(null);
-    const fix = getDetector().fixToken(token, { streak });
+    const fix = getDetector().fixToken(token, { streak, sandwich: req.sandwich === true });
     if (!fix) return sendResponse(null);
     const toHebrew = hasHebrew(fix.replacement);
     if ((toHebrew && !settings.enToHe) || (!toHebrew && !settings.heToEn)) return sendResponse(null);

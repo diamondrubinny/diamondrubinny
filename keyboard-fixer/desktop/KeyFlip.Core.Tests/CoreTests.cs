@@ -52,7 +52,8 @@ public class CoreTests
             string token = c.GetProperty("token").GetString()!;
             JsonElement expected = c.GetProperty("fix");
             int streak = c.TryGetProperty("streak", out JsonElement st) ? st.GetInt32() : 0;
-            Fix? actual = SharedDetector.Value.FixToken(token, streak);
+            bool sandwich = c.TryGetProperty("sandwich", out JsonElement sw) && sw.GetBoolean();
+            Fix? actual = SharedDetector.Value.FixToken(token, streak, sandwich);
             if (expected.ValueKind == JsonValueKind.Null)
             {
                 Assert.True(actual is null, $"'{token}' (streak {streak}) should be left alone but became '{actual?.Replacement}'");

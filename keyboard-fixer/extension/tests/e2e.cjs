@@ -55,6 +55,8 @@ const PAGE = `<!doctype html><meta charset=utf-8><body>
   });
   await check('retro-fix: short word before a fixed word', async () => { await page.fill('#inp', ''); await type('#inp', 'kt tck '); assert.equal(await val('#inp'), 'לא אבל '); });
   await check('streak: short word after a fixed word', async () => { await page.fill('#inp', ''); await type('#inp', 'tck kt zv '); assert.equal(await val('#inp'), 'אבל לא זה '); });
+  await check('between two fixed words: valid English short word is repaired', async () => { await page.fill('#inp', ''); await type('#inp', 'tck to zv '); assert.equal(await val('#inp'), 'אבל אם זה '); });
+  await check('English sentence with the same short word is untouched', async () => { await page.fill('#inp', ''); await type('#inp', 'hello how to go there '); assert.equal(await val('#inp'), 'hello how to go there '); });
   await check('model path: word not in dictionary', async () => { await page.fill('#inp', ''); await type('#inp', 'akunl '); assert.equal(await val('#inp'), 'שלומך '); });
   await check('short word alone is left alone', async () => { await page.fill('#inp', ''); await type('#inp', 'hello there kt '); assert.equal(await val('#inp'), 'hello there kt '); });
   await check('contenteditable: retro-fix', async () => { await page.evaluate(() => { document.querySelector('#ce').textContent = ''; }); await type('#ce', 'kt tck '); assert.equal((await val('#ce')).replace(/\u00a0/g, ' '), 'לא אבל '); });

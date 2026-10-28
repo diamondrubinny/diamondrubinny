@@ -25,6 +25,7 @@ public sealed class Detector
         public const double ModelMaxTyped = -3.0;
         public const double DualMinRank = 1000;
         public const double DualRatio = 30;
+        public const double SandwichRank = 400;
     }
 
     private const string HePrefixLetters = "והבלמשכ";
@@ -139,7 +140,7 @@ public sealed class Detector
         && targetScore >= Tuning.ModelMinTarget
         && typedScore <= Tuning.ModelMaxTyped;
 
-    private string? FixWord(string word, int streak, bool allowModel)
+    private string? FixWord(string word, int streak, bool allowModel, bool sandwich)
     {
         if (word.Length < 2) return null;
         if (Forbidden.IsMatch(word)) return null;
@@ -156,7 +157,8 @@ public sealed class Detector
                 var hr = heOk ? HebrewRank(he) : null;
                 bool clear = (word.Length >= 3 || streak > 0) && hr is not null
                     && er.Value >= Tuning.DualMinRank && hr.Value.Rank * Tuning.DualRatio < er.Value;
-                return clear && IsValidHebrew(he, streak) ? he : null;
+                bool between = sandwich && word.Length <= 3 && hr is not null && hr.Value.Rank < Tuning.SandwichRank;
+                return (clear || between) && IsValidHebrew(he, Math.Max(streak, between ? 1 : 0)) ? he : null;
             }
             if (!heOk) return null;
             if (IsValidHebrew(he, streak)) return he;
@@ -179,7 +181,8 @@ public sealed class Detector
                 int? er = enOk ? EnglishRank(en) : null;
                 bool clear = (word.Length >= 3 || streak > 0) && er is not null
                     && hr.Value.Rank >= Tuning.DualMinRank && er.Value * Tuning.DualRatio < hr.Value.Rank;
-                return clear && IsValidEnglish(en, streak) ? en : null;
+                bool between = sandwich && word.Length <= 3 && er is not null && er.Value < Tuning.SandwichRank;
+                return (clear || between) && IsValidEnglish(en, Math.Max(streak, between ? 1 : 0)) ? en : null;
             }
             if (!enOk) return null;
             if (IsValidEnglish(en, streak)) return en;
@@ -195,10 +198,11 @@ public sealed class Detector
 
     /// <summary>
     /// Examines a whitespace-free token that was just completed. <paramref name="streak"/> is the number of words just
-    /// corrected in a row (wrong-layout typing tends to continue). Trailing sentence punctuation is tried both as
+    /// corrected in a row (wrong-layout typing tends to continue). <paramref name="sandwich"/> means the word sits between
+    /// words that were just corrected, so a short word valid in both languages is flipped when the other reading is very common. Trailing sentence punctuation is tried both as
     /// punctuation and as layout-mapped letters (e.g. "," is the Hebrew ת key).
     /// </summary>
-    public Fix? FixToken(string token, int streak = 0)
+    public Fix? FixToken(string token, int streak = 0, bool sandwich = false)
     {
         int lead = 0;
         while (lead < token.Length && LeadingPunct.Contains(token[lead])) lead++;
@@ -212,7 +216,7 @@ public sealed class Detector
             while (true)
             {
                 string candidate = body[..end];
-                string? fixedWord = FixWord(candidate, streak, allowModel);
+                string? fixedWord = FixWord(candidate, streak, allowModel, sandwich);
                 if (fixedWord is not null) return new Fix(lead + end, token[..lead] + fixedWord);
                 if (end <= 1 || !TrailingPunct.Contains(candidate[end - 1])) break;
                 end--;

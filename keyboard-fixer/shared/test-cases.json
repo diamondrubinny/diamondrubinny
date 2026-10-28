@@ -256,6 +256,39 @@
     {
       "token": "אבל",
       "fix": null
+    },
+    {
+      "token": "to",
+      "streak": 1,
+      "sandwich": true,
+      "fix": {
+        "consumed": 2,
+        "replacement": "אם"
+      }
+    },
+    {
+      "token": "to",
+      "streak": 1,
+      "fix": null
+    },
+    {
+      "token": "to",
+      "fix": null
+    },
+    {
+      "token": "אם",
+      "streak": 1,
+      "sandwich": true,
+      "fix": {
+        "consumed": 2,
+        "replacement": "to"
+      }
+    },
+    {
+      "token": "hello",
+      "streak": 1,
+      "sandwich": true,
+      "fix": null
     }
   ]
 }

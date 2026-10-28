@@ -91,7 +91,7 @@ test('shared cases: trailingRunStart', () => {
 });
 test('shared cases: detect', () => {
   const d = makeDetector();
-  for (const c of shared.detect) assert.deepEqual(d.fixToken(c.token, { streak: c.streak ?? 0 }), c.fix, `${c.token} streak=${c.streak ?? 0}`);
+  for (const c of shared.detect) assert.deepEqual(d.fixToken(c.token, { streak: c.streak ?? 0, sandwich: c.sandwich ?? false }), c.fix, `${c.token} streak=${c.streak ?? 0}`);
 });
 
 import { NgramModel } from '../src/ngram.ts';

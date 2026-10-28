@@ -168,7 +168,8 @@ internal sealed class TrayApp : ApplicationContext
         {
             if (_monitor.Epoch != e.Epoch || WindowInfo.Foreground != e.Window) return; // the user kept typing
 
-            Fix? fix = _detector.FixToken(e.Word, CurrentStreak(e.Window));
+            int streakBefore = CurrentStreak(e.Window);
+            Fix? fix = _detector.FixToken(e.Word, streakBefore);
             if (fix is null)
             {
                 NoteResult(e.Window, fixedWord: false, e.Word.Length);
@@ -199,7 +200,7 @@ internal sealed class TrayApp : ApplicationContext
                 var edits = new List<(int Start, string Token, Fix Fix)>();
                 foreach (var (start, token) in LineBuffer.PreviousShortTokens(line, wordStart))
                 {
-                    Fix? retro = _detector.FixToken(token, 1);
+                    Fix? retro = _detector.FixToken(token, 1, sandwich: streakBefore >= 1);
                     if (retro is null) break;
                     edits.Add((start, token, retro));
                 }

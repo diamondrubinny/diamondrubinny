@@ -13,6 +13,8 @@ export interface Fix {
 }
 
 export interface DetectOptions {
+  /** The word sits between words that were just corrected: a short word valid in both languages is then flipped if the other reading is very common. */
+  sandwich?: boolean;
   /** Number of consecutive words just corrected in the same field. Typing in the wrong layout tends to continue. */
   streak?: number;
 }
@@ -28,6 +30,7 @@ export const TUNING = {
   modelMinTarget: -3.4, // converted word must look at least this word-like
   modelMaxTyped: -3.0, // typed word must look at most this word-like in its own language
   modelVowelMaxLen: 4, // typed Latin words up to this length without a, e, i, o, u, y are usually abbreviations (csrf, mkdir): skip the model
+  sandwichRank: 400, // 'to' between two corrected words becomes 'אם' (rank < 400 in the other language)
   dualMinRank: 1000, // a word valid in BOTH languages is only flipped if the typed reading is at least this rare...
   dualRatio: 30, // ...and the other reading is this many times more frequent (rank ratio)
 };
@@ -116,7 +119,7 @@ export class Detector {
   }
 
   /** Decides whether one word (without surrounding punctuation) was typed in the wrong layout. */
-  private fixWord(word: string, streak: number, allowModel: boolean): string | null {
+  private fixWord(word: string, streak: number, allowModel: boolean, sandwich: boolean): string | null {
     if (word.length < 2) return null;
     if (/[0-9@\\]|:\/\//.test(word)) return null;
     if (/[A-Z]/.test(word)) return null; // names, acronyms, sentence starts, camelCase
@@ -130,7 +133,8 @@ export class Detector {
         // Also a valid English word: flip only when the Hebrew reading is far more frequent.
         const hr = heOk ? this.hebrewRank(he) : undefined;
         const clear = (word.length >= 3 || streak > 0) && hr !== undefined && er >= TUNING.dualMinRank && hr.rank * TUNING.dualRatio < er;
-        return clear && this.isValidHebrew(he, streak) ? he : null;
+        const between = sandwich && word.length <= 3 && hr !== undefined && hr.rank < TUNING.sandwichRank;
+        return (clear || between) && this.isValidHebrew(he, Math.max(streak, between ? 1 : 0)) ? he : null;
       }
       if (!heOk) return null;
       if (this.isValidHebrew(he, streak)) return he;
@@ -148,7 +152,8 @@ export class Detector {
         // Also a valid Hebrew word: flip only when the English reading is far more frequent.
         const er = enOk ? this.englishRank(en) : undefined;
         const clear = (word.length >= 3 || streak > 0) && er !== undefined && hr.rank >= TUNING.dualMinRank && er * TUNING.dualRatio < hr.rank;
-        return clear && this.isValidEnglish(en, streak) ? en : null;
+        const between = sandwich && word.length <= 3 && er !== undefined && er < TUNING.sandwichRank;
+        return (clear || between) && this.isValidEnglish(en, Math.max(streak, between ? 1 : 0)) ? en : null;
       }
       if (!enOk) return null;
       if (this.isValidEnglish(en, streak)) return en;
@@ -167,6 +172,7 @@ export class Detector {
    */
   fixToken(token: string, options: DetectOptions = {}): Fix | null {
     const streak = options.streak ?? 0;
+    const sandwich = options.sandwich ?? false;
     let lead = 0;
     const leading = LEADING_PUNCT.exec(token);
     if (leading) lead = leading[0].length;
@@ -179,7 +185,7 @@ export class Detector {
       let end = body.length;
       for (;;) {
         const candidate = body.slice(0, end);
-        const fixed = this.fixWord(candidate, streak, allowModel);
+        const fixed = this.fixWord(candidate, streak, allowModel, sandwich);
         if (fixed !== null) return { consumed: lead + end, replacement: token.slice(0, lead) + fixed };
         if (end <= 1 || !TRAILING_PUNCT.test(candidate[end - 1]!)) break;
         end--;
