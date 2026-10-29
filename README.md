@@ -34,7 +34,7 @@ A free, secure, open-source Linux desktop with a **built-in local AI** and a Heb
 ### 📺 [Rubinny Signage](https://github.com/diamondrubinny/freescreensign)
 Free open-source **digital signage**. Design content, build layouts and run any number of screens from one dashboard — self-hosted, offline-first, RTL &amp; accessible.
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/freescreensign?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/freescreensign?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/freescreensign?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/freescreensign?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/freescreensign?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/freescreensign?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/freescreensign?style=flat-square)
 
 **[→ Download latest release](https://github.com/diamondrubinny/freescreensign/releases/latest)** · [Self-host guide](https://github.com/diamondrubinny/freescreensign#readme)
 
@@ -70,12 +70,12 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 <tr>
 <td width="50%" valign="top">
 
-### 💜 [NexaHeart](https://github.com/diamondrubinny/Dateos)
+### 💜 [NexaHeart](https://github.com/diamondrubinny/NexaHeart)
 The **free, open-source dating platform** anyone can run. Native iOS &amp; Android plus web from one codebase — privacy by design, safety built in. <sub>(formerly Dateos)</sub>
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/Dateos?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Dateos?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/NexaHeart?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/NexaHeart?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/NexaHeart?style=flat-square)
 
-**[→ Learn more](https://github.com/diamondrubinny/Dateos#readme)**
+**[→ Learn more](https://github.com/diamondrubinny/NexaHeart#readme)** · [nexaheart.com](https://nexaheart.com)
 
 </td>
 <td width="50%" valign="top">
@@ -83,7 +83,7 @@ The **free, open-source dating platform** anyone can run. Native iOS &amp; Andro
 ### 🎮 [Gameu](https://github.com/diamondrubinny/Gameu)
 Turn any TV into a **party game console** that runs from a USB drive — players' phones are the controllers. No app install, just scan a QR code.
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
 
 **[→ Play](https://github.com/diamondrubinny/Gameu#readme)**
 
@@ -95,9 +95,9 @@ Turn any TV into a **party game console** that runs from a USB drive — players
 ### 🍽️ [MenuAI](https://github.com/diamondrubinny/menuai)
 Designer-grade **menu builder** for restaurants, cafés &amp; bars — any language with full RTL, 16 themes, export to a single HTML file, PDF or QR code.
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/menuai?style=flat-square)
 
-**[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)**
+**[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)** · [Download](https://github.com/diamondrubinny/menuai/releases/latest)
 
 </td>
 <td width="50%" valign="top">
@@ -105,7 +105,7 @@ Designer-grade **menu builder** for restaurants, cafés &amp; bars — any langu
 ### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
 Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` → `שלום`. Chrome extension + Windows tray app, 100% local.
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/keyflip?include_prereleases&style=flat-square)
 
 **[→ Download](https://github.com/diamondrubinny/keyflip/releases)**
 
@@ -161,7 +161,8 @@ Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` �
 
 **שלום, אני דיימונד רוביני — מפתח Full-Stack ובונה מערכות.**
 אני בונה כלים חינמיים בקוד פתוח, מאובטחים, נגישים ומותאמים לעברית ול־RTL מהיסוד:
-מערכת הפעלה עם AI מקומי, שילוט דיגיטלי בהתקנה עצמית, לאנצ'ר ל־Android TV,
+מערכת הפעלה עם AI מקומי (D.Ai OS), שילוט דיגיטלי בהתקנה עצמית (Rubinny Signage), לאנצ'ר אימה ל־Android TV (SCARY),
+פלטפורמת אוטומציה ואינטגרציות (The Integrator),
 פלטפורמת היכרויות בקוד פתוח (NexaHeart), קונסולת משחקי מסיבה לטלוויזיה (Gameu),
 בונה תפריטים רב־לשוני (MenuAI), ותיקון טקסט שהוקלד בשפה הלא נכונה (KeyFlip).
 
