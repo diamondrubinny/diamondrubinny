@@ -10,7 +10,8 @@
 
 ## Privacy practices
 - אין איסוף נתוני משתמש. אין מכירה/העברה לצד שלישי. אין שימוש בנתונים מחוץ למטרה היחידה.
-- קישור למדיניות הפרטיות: [URL לפרסום של docs/PRIVACY.md].
+- קישור למדיניות הפרטיות: `https://github.com/diamondrubinny/keyflip/blob/main/docs/PRIVACY.en.md` (יעבוד אחרי שהקוד יידחף לריפו `keyflip`; עד אז: `https://github.com/diamondrubinny/diamondrubinny/blob/claude/typing-error-translation-addon-ae6d7h/keyboard-fixer/docs/PRIVACY.en.md`).
 
-## חומרים להשלים
-צילומי מסך 1280×800, אייקון 128, חשבון מפתח (דמי רישום חד-פעמיים – לאמת).
+## חומרים
+- צילומי מסך מוכנים (1366×768) ב-`docs/screenshots/` (01–05). חסרים צילומי אפליקציית Windows: ראו `docs/screenshots/README.md`.
+- אייקון 128 קיים ב-`extension/icons/128.png`. Chrome Web Store דורש חשבון מפתח ודמי רישום חד-פעמיים (לאמת); Microsoft Store: ראו `docs/MICROSOFT_STORE.md`.

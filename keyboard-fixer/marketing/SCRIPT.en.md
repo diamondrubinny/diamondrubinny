@@ -28,7 +28,7 @@ Wrote a whole sentence before noticing your keyboard was on the wrong language? 
 - Chrome extension + Windows app
 - Free and open source (Apache-2.0)
 - Runs locally, sends no data, never touches password fields
-Download: [link – https://github.com/diamondrubinny/diamondrubinny/releases, or the keyflip repo once it exists]
+Download: https://github.com/diamondrubinny/diamondrubinny/releases (switch to https://github.com/diamondrubinny/keyflip/releases once that repo exists)
 Note: preview release; Windows may warn because the app is not code-signed yet.
 **Hashtags:** #productivity #chromeextension #windows #opensource #hebrew #typing #keyflip
 

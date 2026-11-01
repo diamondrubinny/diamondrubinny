@@ -3,10 +3,11 @@
 סימון: ✅ בוצע · ⬜ פתוח · 🔎 דורש בעל מקצוע
 
 ## פונקציונליות
-- ✅ בדיקות יחידה (16) ובדיקות הקצה-לקצה בדפדפן (10)
+- ✅ בדיקות יחידה (18) ובדיקות הקצה-לקצה בדפדפן (כ-25, כולל שדות סיסמה, רצף תיקונים ותיקון רטרואקטיבי)
 - ✅ בדיקות משותפות TS/C# (`shared/test-cases.json`), CI על Windows
 - ✅ בדיקה ידנית בסיסית של תוכנת Windows (דווח ע"י המשתמש: עובדת)
 - ⬜ בדיקה ידנית מקיפה: Word, Slack, Outlook, WhatsApp Web, Gmail, שדות React, Google Docs
+- ✅ צילומי מסך של התוסף (`docs/screenshots/`); ⬜ צילומי מסך של אפליקציית Windows
 - ⬜ בדיקת קיצור המקשים של התוסף בפועל ב-Chrome
 
 ## הרשאות ותפקידים
@@ -41,4 +42,5 @@
 ## הפצה
 - ✅ GitHub Release (Pre-release) עם SHA256
 - ⬜ חבילה לחנות Chrome + כרטיס חנות (`STORE_LISTING.md`)
-- ⬜ מתקין (MSIX/Inno Setup) והסרה נקייה
+- ✅ מתקין Inno Setup עם הסרה (נבנה ב-CI); ⬜ בדיקת התקנה והסרה ידנית ב-Windows
+- ✅ חבילת MSIX לחנות Microsoft נבנית ב-CI (`docs/MICROSOFT_STORE.md`); ⬜ הרשמה והגשה ב-Partner Center

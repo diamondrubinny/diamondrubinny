@@ -18,6 +18,17 @@ Typed `akuo` instead of `שלום`, or `יקךךם` instead of `hello`? KeyFlip 
 - **Safe by default:** never touches password fields (the extension also skips fields named or labelled like passwords/PIN/OTP/card numbers and CSS-masked inputs; the Windows app asks Windows UI Automation whether the focused control is a password field and does nothing if it cannot tell), skips payment-card and one-time-code fields, code editors, words containing digits, `@`, URLs or capital letters; the Windows app also skips password managers, terminals and (by default) browsers.
 - **Accessible UI:** RTL Hebrew, keyboard operable, light/dark themes, automated WCAG 2.1 A/AA scan (axe-core).
 
+## Screenshots
+Captured from the real extension running in Chromium (`extension/scripts/screenshots.cjs`).
+
+| | |
+|---|---|
+| ![Wrong keyboard layout](docs/screenshots/01-wrong-layout.png) | ![Fixed automatically](docs/screenshots/02-fixed-automatically.png) |
+| ![English typed on a Hebrew layout](docs/screenshots/03-english-from-hebrew-layout.png) | ![Popup: per-site switch](docs/screenshots/04-popup.png) |
+| ![Settings page](docs/screenshots/05-settings.png) | |
+
+The Windows tray app has no screenshot yet (it cannot be captured in the build environment); see [docs/screenshots/README.md](docs/screenshots/README.md).
+
 ## Install
 **Windows app (installer):** download `KeyFlip-Setup-x64.exe` from [Releases](../../releases) and run it. It installs for your user without administrator rights, can start KeyFlip with Windows, and adds an entry to *Settings → Apps → Installed apps* so you can uninstall it cleanly. A portable build (`KeyFlip-windows-x64-self-contained.exe`) is also available: run it directly (tray icon). The build is unsigned until the SignPath Foundation application is approved, so SmartScreen may warn: choose *More info → Run anyway*, or right-click the file → *Properties → Unblock*. Verify the files with `SHA256SUMS.txt`.
 
