@@ -13,6 +13,13 @@
   <a href="https://github.com/diamondrubinny?tab=followers"><img alt="Followers" src="https://img.shields.io/github/followers/diamondrubinny?style=for-the-badge&label=Follow&logo=github&color=2ea44f"></a>
 </p>
 
+<p align="center" dir="rtl">🇮🇱 <b>כלים חינמיים בקוד פתוח, בעברית ו־RTL מהיסוד — מאובטחים, נגישים ופרטיים.</b></p>
+
+<p align="center">
+  <a href="https://github.com/diamondrubinny/D.Ai"><img width="49%" alt="D.Ai OS desktop with a built-in local AI" src="https://raw.githubusercontent.com/diamondrubinny/D.Ai/HEAD/docs/screenshots/desktop.png"></a>
+  <a href="https://github.com/diamondrubinny/rubinny-signage"><img width="49%" alt="Rubinny Signage: a restaurant menu screen" src="https://raw.githubusercontent.com/diamondrubinny/rubinny-signage/HEAD/docs/screenshots/kits/restaurant-en.webp"></a>
+</p>
+
 ---
 
 ## 🚀 Flagship projects
@@ -31,12 +38,61 @@ A free, secure, open-source Linux desktop with a **built-in local AI** and a Heb
 </td>
 <td width="50%" valign="top">
 
-### 📺 [Rubinny Signage](https://github.com/diamondrubinny/freescreensign)
+### 📺 [Rubinny Signage](https://github.com/diamondrubinny/rubinny-signage)
 Free open-source **digital signage**. Design content, build layouts and run any number of screens from one dashboard — self-hosted, offline-first, RTL &amp; accessible.
 
-![Stars](https://img.shields.io/github/stars/diamondrubinny/freescreensign?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/freescreensign?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/freescreensign?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/freescreensign?style=flat-square)
+![Stars](https://img.shields.io/github/stars/diamondrubinny/rubinny-signage?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/rubinny-signage?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/rubinny-signage?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/rubinny-signage?style=flat-square)
 
-**[→ Download latest release](https://github.com/diamondrubinny/freescreensign/releases/latest)** · [Self-host guide](https://github.com/diamondrubinny/freescreensign#readme)
+**[→ Download latest release](https://github.com/diamondrubinny/rubinny-signage/releases/latest)** · [Self-host guide](https://github.com/diamondrubinny/rubinny-signage#readme)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 💜 [NexaHeart](https://github.com/diamondrubinny/NexaHeart)
+The **free, open-source dating platform** anyone can run. Native iOS &amp; Android plus web from one codebase — privacy by design, safety built in. <sub>(formerly Dateos)</sub>
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/NexaHeart?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/NexaHeart?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/NexaHeart?style=flat-square)
+
+**[→ Learn more](https://github.com/diamondrubinny/NexaHeart#readme)** · [nexaheart.com](https://nexaheart.com)
+
+</td>
+<td width="50%" valign="top">
+
+### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
+Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` → `שלום`. Chrome extension + Windows tray app, 100% local.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/keyflip?include_prereleases&style=flat-square)
+
+**[→ Download](https://github.com/diamondrubinny/keyflip/releases)**
+
+</td>
+</tr>
+</table>
+
+## 🆕 More projects
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🎮 [Gameu](https://github.com/diamondrubinny/Gameu)
+Turn any TV into a **party game console** that runs from a USB drive — players' phones are the controllers. No app install, just scan a QR code.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
+
+**[→ Play](https://github.com/diamondrubinny/Gameu#readme)**
+
+</td>
+<td width="50%" valign="top">
+
+### 🍽️ [MenuAI](https://github.com/diamondrubinny/menuai)
+Designer-grade **menu builder** for restaurants, cafés &amp; bars — any language with full RTL, 16 themes, export to a single HTML file, PDF or QR code.
+
+![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/menuai?style=flat-square)
+
+**[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)** · [Download](https://github.com/diamondrubinny/menuai/releases/latest)
 
 </td>
 </tr>
@@ -59,55 +115,6 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 ![Stars](https://img.shields.io/github/stars/diamondrubinny/TheIntegrator?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/TheIntegrator?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/TheIntegrator?style=flat-square)
 
 **[→ Explore](https://github.com/diamondrubinny/TheIntegrator#readme)**
-
-</td>
-</tr>
-</table>
-
-## 🆕 New projects
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 💜 [NexaHeart](https://github.com/diamondrubinny/NexaHeart)
-The **free, open-source dating platform** anyone can run. Native iOS &amp; Android plus web from one codebase — privacy by design, safety built in. <sub>(formerly Dateos)</sub>
-
-![Stars](https://img.shields.io/github/stars/diamondrubinny/NexaHeart?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/NexaHeart?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/NexaHeart?style=flat-square)
-
-**[→ Learn more](https://github.com/diamondrubinny/NexaHeart#readme)** · [nexaheart.com](https://nexaheart.com)
-
-</td>
-<td width="50%" valign="top">
-
-### 🎮 [Gameu](https://github.com/diamondrubinny/Gameu)
-Turn any TV into a **party game console** that runs from a USB drive — players' phones are the controllers. No app install, just scan a QR code.
-
-![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
-
-**[→ Play](https://github.com/diamondrubinny/Gameu#readme)**
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🍽️ [MenuAI](https://github.com/diamondrubinny/menuai)
-Designer-grade **menu builder** for restaurants, cafés &amp; bars — any language with full RTL, 16 themes, export to a single HTML file, PDF or QR code.
-
-![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/menuai?style=flat-square)
-
-**[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)** · [Download](https://github.com/diamondrubinny/menuai/releases/latest)
-
-</td>
-<td width="50%" valign="top">
-
-### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
-Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` → `שלום`. Chrome extension + Windows tray app, 100% local.
-
-![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square) ![License](https://img.shields.io/github/license/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/keyflip?include_prereleases&style=flat-square)
-
-**[→ Download](https://github.com/diamondrubinny/keyflip/releases)**
 
 </td>
 </tr>
@@ -148,7 +155,8 @@ Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` �
 ## 🤝 Get involved
 
 - ⭐ **Star** a project you find useful — it really helps others discover it
-- 🐛 Found a bug or have an idea? **[Open an issue](https://github.com/diamondrubinny/freescreensign/issues)** in the relevant repo
+- 👀 **[Follow me](https://github.com/diamondrubinny)** to get new releases in your feed
+- 🐛 Found a bug or have an idea? **Open an issue** in the relevant repo
 - 🔀 Pull requests are welcome — check each repo's README for contribution notes
 - 💼 Need a custom system, website or integration? → **[rubinny.co.il](https://rubinny.co.il)**
 - 🤝 Want a **commercial license** or to **buy the rights** to one of my projects? Send your proposal to **[d@rubinny.net](mailto:d@rubinny.net)** — include who you are, the project, intended use and your offer
