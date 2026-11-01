@@ -49,6 +49,31 @@ jobs:
         run: |
           choco install innosetup --no-progress -y
           & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DSourceExe=${{ github.workspace }}\out\self-contained\KeyFlip.exe" "/DAppVersion=0.1.0.${{ github.run_number }}" keyboard-fixer\desktop\installer\KeyFlip.iss
+      - name: Build MSIX package (unsigned; the Microsoft Store signs it)
+        id: msix
+        continue-on-error: true
+        env:
+          MSIX_IDENTITY_NAME: ${{ vars.MSIX_IDENTITY_NAME }}
+          MSIX_PUBLISHER: ${{ vars.MSIX_PUBLISHER }}
+          MSIX_PUBLISHER_DISPLAY: ${{ vars.MSIX_PUBLISHER_DISPLAY }}
+        run: |
+          $name = if ($env:MSIX_IDENTITY_NAME) { $env:MSIX_IDENTITY_NAME } else { 'diamondrubinny.KeyFlip' }
+          $publisher = if ($env:MSIX_PUBLISHER) { $env:MSIX_PUBLISHER } else { 'CN=00000000-0000-0000-0000-000000000000' }
+          $display = if ($env:MSIX_PUBLISHER_DISPLAY) { $env:MSIX_PUBLISHER_DISPLAY } else { 'diamondrubinny' }
+          $layout = 'msix-layout'
+          New-Item -ItemType Directory -Force "$layout\Assets" | Out-Null
+          Copy-Item out\self-contained\KeyFlip.exe $layout\
+          Copy-Item keyboard-fixer\desktop\msix\Assets\* "$layout\Assets\"
+          (Get-Content keyboard-fixer\desktop\msix\AppxManifest.template.xml -Raw).Replace('{{IDENTITY_NAME}}', $name).Replace('{{PUBLISHER}}', $publisher).Replace('{{PUBLISHER_DISPLAY}}', $display).Replace('{{VERSION}}', '0.1.${{ github.run_number }}.0') | Set-Content "$layout\AppxManifest.xml" -Encoding utf8
+          $makeappx = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\10.*\x64\makeappx.exe" | Sort-Object FullName -Descending | Select-Object -First 1
+          New-Item -ItemType Directory -Force out | Out-Null
+          & $makeappx.FullName pack /d $layout /p out\KeyFlip.msix /o
+          if ($LASTEXITCODE -ne 0) { throw 'makeappx failed' }
+      - uses: actions/upload-artifact@v4
+        if: steps.msix.outcome == 'success'
+        with:
+          name: keyflip-msix-store-package
+          path: out/KeyFlip.msix
       - uses: actions/upload-artifact@v4
         with:
           name: keyflip-windows-installer

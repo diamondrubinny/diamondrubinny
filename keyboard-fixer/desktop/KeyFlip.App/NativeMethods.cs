@@ -165,6 +165,17 @@ internal static class NativeMethods
     [DllImport("user32.dll", CharSet = CharSet.Unicode)]
     public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
 
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    public static extern int GetCurrentPackageFullName(ref int packageFullNameLength, StringBuilder? packageFullName);
+
+    /// <summary>True when the process runs inside an MSIX package (Microsoft Store build).</summary>
+    public static bool IsPackaged()
+    {
+        const int AppModelErrorNoPackage = 15700;
+        int length = 0;
+        return GetCurrentPackageFullName(ref length, null) != AppModelErrorNoPackage;
+    }
+
     [DllImport("user32.dll", EntryPoint = "GetWindowLongW")]
     public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 }

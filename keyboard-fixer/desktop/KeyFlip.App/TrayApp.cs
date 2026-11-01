@@ -64,6 +64,8 @@ internal sealed class TrayApp : ApplicationContext
 
         _startupItem = new ToolStripMenuItem("הפעל עם Windows") { CheckOnClick = true, Checked = IsStartupEnabled() };
         _startupItem.CheckedChanged += (_, _) => SetStartup(_startupItem.Checked);
+        // The Store (MSIX) build starts with Windows through its startup task: Settings > Apps > Startup.
+        _startupItem.Visible = !NativeMethods.IsPackaged();
 
         var aboutItem = new ToolStripMenuItem("פרטיות ומידע");
         aboutItem.Click += (_, _) => ShowAbout();
@@ -112,7 +114,8 @@ internal sealed class TrayApp : ApplicationContext
             "• התוכנה עוקבת אחרי המקשים שנלחצים כדי לזהות מילה שהסתיימה, ושומרת רק את השורה הנוכחית בזיכרון (עד 200 תווים).\n" +
             "• שום דבר לא נכתב לדיסק, לא נרשם ביומן ולא נשלח לרשת.\n" +
             "• כברירת מחדל התוכנה לא פועלת בדפדפנים (התוסף מטפל בהם; אפשר להפעיל מתפריט המגש), ולעולם לא במנהלי סיסמאות, בטרמינלים ובשדות סיסמה קלאסיים.\n" +
-            "• ההגדרות נשמרות ב-%APPDATA%\\KeyFlip\\settings.json.\n\n" +
+            "• ההגדרות נשמרות ב-%APPDATA%\\KeyFlip\\settings.json.\n" +
+            (NativeMethods.IsPackaged() ? "• הפעלה עם Windows: הגדרות ← אפליקציות ← הפעלה.\n" : "") + "\n" +
             "ביטול תיקון אוטומטי: Ctrl+Alt+Space מיד אחריו.",
             "KeyFlip",
             MessageBoxButtons.OK,
