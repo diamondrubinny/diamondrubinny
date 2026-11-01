@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="https://rubinny.co.il"><img alt="Website" src="https://img.shields.io/badge/Website-rubinny.co.il-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/diamond-r/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-diamond--r-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
   <a href="https://github.com/diamondrubinny?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/Open_Source-Projects-181717?style=for-the-badge&logo=github"></a>
   <a href="https://github.com/diamondrubinny?tab=followers"><img alt="Followers" src="https://img.shields.io/github/followers/diamondrubinny?style=for-the-badge&label=Follow&logo=github&color=2ea44f"></a>
 </p>
