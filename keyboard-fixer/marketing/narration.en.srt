@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:03,200
+Typed a whole sentence in the wrong language?
+
+2
+00:00:03,200 --> 00:00:07,000
+Total gibberish. Now delete it all and retype.
+
+3
+00:00:07,000 --> 00:00:11,500
+Meet KeyFlip, a free tool that fixes it instantly.
+
+4
+00:00:11,500 --> 00:00:16,000
+Keep typing. At the end of each word, it spots the mistake and fixes it.
+
+5
+00:00:16,000 --> 00:00:20,500
+It works both ways: Hebrew to English, and English to Hebrew.
+
+6
+00:00:20,500 --> 00:00:25,000
+It runs on your computer, sends nothing anywhere, and never touches passwords.
+
+7
+00:00:25,000 --> 00:00:30,000
+Chrome extension and Windows app. Open source and free. Link in the description!
+

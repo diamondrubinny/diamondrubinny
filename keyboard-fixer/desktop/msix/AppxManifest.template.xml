@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Template for the Microsoft Store package. The build replaces the {{...}} tokens:
+  IDENTITY_NAME / PUBLISHER / PUBLISHER_DISPLAY come from Partner Center (Product management > Product identity)
+  and are stored as GitHub repository variables (see docs/MICROSOFT_STORE.md). VERSION is 0.1.<build>.0
+  (the Store reserves the fourth number).
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap desktop rescap">
+
+  <Identity Name="{{IDENTITY_NAME}}" Publisher="{{PUBLISHER}}" Version="{{VERSION}}" ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>KeyFlip</DisplayName>
+    <PublisherDisplayName>{{PUBLISHER_DISPLAY}}</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+
+  <Applications>
+    <Application Id="KeyFlip" Executable="KeyFlip.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="KeyFlip"
+        Description="Fixes text typed in the wrong keyboard layout between Hebrew and English."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png" />
+      <Extensions>
+        <!-- Optional start with Windows; the user switches it on in Settings > Apps > Startup. -->
+        <desktop:Extension Category="windows.startupTask" Executable="KeyFlip.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="KeyFlipStartup" Enabled="false" DisplayName="KeyFlip" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <!-- Required for a Win32 (desktop bridge) app; Partner Center asks for a justification. -->
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
