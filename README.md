@@ -75,7 +75,7 @@ The **free, open-source dating platform** anyone can run. Native iOS &amp; Andro
 <td width="50%" valign="top">
 
 ### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
-Fixes text typed in the **wrong keyboard layout** (Hebrew ↔ English): `akuo` → `שלום`. Chrome extension + Windows tray app, 100% local.
+Fixes text typed in the **wrong keyboard layout** — Hebrew, Russian &amp; Arabic ↔ English: `akuo` → `שלום`, `ghbdtn` → `привет`. Chrome extension + Windows tray app, 100% local.
 
 [![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/keyflip/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/keyflip?style=flat-square&label=updated)](https://github.com/diamondrubinny/keyflip/commits) ![License](https://img.shields.io/github/license/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/keyflip?include_prereleases&style=flat-square)
 
@@ -196,7 +196,7 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 הגנה מפני הנדסה לאחור ושכפול (Antirea), מערכת הפעלה עם AI מקומי (D.Ai OS), שילוט דיגיטלי בהתקנה עצמית (Rubinny Signage), לאנצ'ר אימה ל־Android TV (SCARY),
 פלטפורמת אוטומציה ואינטגרציות (The Integrator),
 פלטפורמת היכרויות בקוד פתוח (NexaHeart), קונסולת משחקי מסיבה לטלוויזיה (Gameu),
-בונה תפריטים רב־לשוני (MenuAI), ותיקון טקסט שהוקלד בשפה הלא נכונה (KeyFlip).
+בונה תפריטים רב־לשוני (MenuAI), ותיקון טקסט שהוקלד בשפה הלא נכונה — עברית, רוסית וערבית (KeyFlip).
 
 - ⭐ אהבתם פרויקט? תנו לו כוכב
 - 🐛 מצאתם באג? פתחו Issue בריפו הרלוונטי
