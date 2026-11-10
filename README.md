@@ -4,15 +4,13 @@
   <b>Full-stack developer &amp; systems builder</b><br>
   I build free, open-source tools that are secure, accessible and Hebrew/RTL-first —<br>
   from an AI-powered Linux desktop and self-hosted digital signage<br>
-  to anti reverse-engineering protection, a privacy-first dating platform, TV party games and a multilingual menu builder.
+  to anti reverse-engineering protection, a privacy-first dating platform, a WhatsApp support inbox, TV party games and a multilingual menu builder.
 </p>
 
 <p align="center">
-  <a href="https://rubinny.co.il"><img alt="Website" src="https://img.shields.io/badge/Website-rubinny.co.il-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white"></a>
-  <a href="https://www.linkedin.com/in/diamond-r/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-diamond--r-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-  <a href="https://github.com/diamondrubinny?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/Open_Source-Projects-181717?style=for-the-badge&logo=github"></a>
-  <a href="https://github.com/diamondrubinny?tab=repositories&sort=stargazers"><img alt="Total stars" src="https://img.shields.io/github/stars/diamondrubinny?affiliations=OWNER&style=for-the-badge&logo=github&label=Total%20stars&color=f5c518"></a>
-  <a href="https://github.com/diamondrubinny?tab=followers"><img alt="Followers" src="https://img.shields.io/github/followers/diamondrubinny?style=for-the-badge&label=Follow&logo=github&color=2ea44f"></a>
+  <a href="https://rubinny.co.il"><img alt="Website: rubinny.co.il" src="https://img.shields.io/badge/Website-rubinny.co.il-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/diamond-r/"><img alt="LinkedIn: diamond-r" src="https://img.shields.io/badge/LinkedIn-diamond--r-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="https://github.com/diamondrubinny?tab=repositories"><img alt="Open-source projects" src="https://img.shields.io/badge/Open_Source-Projects-181717?style=for-the-badge&logo=github&logoColor=white"></a>
 </p>
 
 <p align="center" dir="rtl">🇮🇱 <b>כלים חינמיים בקוד פתוח, בעברית ו־RTL מהיסוד — מאובטחים, נגישים ופרטיים.</b></p>
@@ -33,7 +31,7 @@
 ### 🛡️ [Antirea](https://github.com/diamondrubinny/Antirea)
 Drop-in **anti reverse-engineering** toolkit: detect, deceive (honeypot) and disrupt analysis tools (incl. CDP/REA), a multi-language control panel with an AI advisor, and server-side execution that keeps proprietary logic off the client.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/Antirea?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/Antirea/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/Antirea?style=flat-square&label=updated)](https://github.com/diamondrubinny/Antirea/commits) ![License](https://img.shields.io/github/license/diamondrubinny/Antirea?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Antirea?style=flat-square)
+![Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
 **[→ Get started](https://github.com/diamondrubinny/Antirea#readme)** · [norea.rubinny.net](https://norea.rubinny.net)
 
@@ -43,9 +41,9 @@ Drop-in **anti reverse-engineering** toolkit: detect, deceive (honeypot) and dis
 ### 🧠 [D.Ai OS](https://github.com/diamondrubinny/D.Ai)
 A free, secure, open-source Linux desktop with a **built-in local AI** and a Hebrew-first experience in 8 languages.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/D.Ai?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/D.Ai/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/D.Ai?style=flat-square&label=updated)](https://github.com/diamondrubinny/D.Ai/commits) ![License](https://img.shields.io/github/license/diamondrubinny/D.Ai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/D.Ai?style=flat-square)
+![Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat-square) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
-**[→ Get started](https://github.com/diamondrubinny/D.Ai#readme)**
+**[→ Get started](https://github.com/diamondrubinny/D.Ai#readme)** · [Releases](https://github.com/diamondrubinny/D.Ai/releases)
 
 </td>
 </tr>
@@ -55,7 +53,7 @@ A free, secure, open-source Linux desktop with a **built-in local AI** and a Heb
 ### 📺 [Rubinny Signage](https://github.com/diamondrubinny/rubinny-signage)
 Free open-source **digital signage**. Design content, build layouts and run any number of screens from one dashboard — self-hosted, offline-first, RTL &amp; accessible.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/rubinny-signage?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/rubinny-signage/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/rubinny-signage?style=flat-square&label=updated)](https://github.com/diamondrubinny/rubinny-signage/commits) ![License](https://img.shields.io/github/license/diamondrubinny/rubinny-signage?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/rubinny-signage?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/rubinny-signage?style=flat-square)
+![AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 **[→ Download latest release](https://github.com/diamondrubinny/rubinny-signage/releases/latest)** · [Self-host guide](https://github.com/diamondrubinny/rubinny-signage#readme)
 
@@ -65,7 +63,7 @@ Free open-source **digital signage**. Design content, build layouts and run any 
 ### 💜 [NexaHeart](https://github.com/diamondrubinny/NexaHeart)
 The **free, open-source dating platform** anyone can run. Native iOS &amp; Android plus web from one codebase — privacy by design, safety built in. <sub>(formerly Dateos)</sub>
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/NexaHeart?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/NexaHeart/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/NexaHeart?style=flat-square&label=updated)](https://github.com/diamondrubinny/NexaHeart/commits) ![License](https://img.shields.io/github/license/diamondrubinny/NexaHeart?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/NexaHeart?style=flat-square)
+![AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 **[→ Learn more](https://github.com/diamondrubinny/NexaHeart#readme)** · [nexaheart.com](https://nexaheart.com)
 
@@ -77,19 +75,19 @@ The **free, open-source dating platform** anyone can run. Native iOS &amp; Andro
 ### ⌨️ [KeyFlip](https://github.com/diamondrubinny/keyflip)
 Fixes text typed in the **wrong keyboard layout** — Hebrew, Russian &amp; Arabic ↔ English: `akuo` → `שלום`, `ghbdtn` → `привет`. Chrome extension + Windows tray app, 100% local.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/keyflip?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/keyflip/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/keyflip?style=flat-square&label=updated)](https://github.com/diamondrubinny/keyflip/commits) ![License](https://img.shields.io/github/license/diamondrubinny/keyflip?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/keyflip?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/keyflip?include_prereleases&style=flat-square)
+![Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat-square) ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white)
 
 **[→ Download](https://github.com/diamondrubinny/keyflip/releases)**
 
 </td>
 <td width="50%" valign="top">
 
-### ⭐ Live stats
-All counters on this page update automatically from GitHub — stars, last update, releases and languages.
+### 💬 [Botwa](https://github.com/diamondrubinny/Botwa) <sub>🆕</sub>
+**Self-hosted WhatsApp chatbot server** and shared support inbox for teams — keep your conversations and customer data on your own server.
 
-[![Total stars](https://img.shields.io/github/stars/diamondrubinny?affiliations=OWNER&style=flat-square&logo=github&label=Total%20stars&color=f5c518)](https://github.com/diamondrubinny?tab=repositories&sort=stargazers) [![Followers](https://img.shields.io/github/followers/diamondrubinny?style=flat-square&logo=github&label=Followers&color=2ea44f)](https://github.com/diamondrubinny?tab=followers)
+![MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square) ![Self-hosted](https://img.shields.io/badge/Self--hosted-WhatsApp-25D366?style=flat-square&logo=whatsapp&logoColor=white)
 
-**[→ Most-starred repos](https://github.com/diamondrubinny?tab=repositories&sort=stargazers)**
+**[→ Explore](https://github.com/diamondrubinny/Botwa#readme)**
 
 </td>
 </tr>
@@ -104,7 +102,7 @@ All counters on this page update automatically from GitHub — stars, last updat
 ### 🎮 [Gameu](https://github.com/diamondrubinny/Gameu)
 Turn any TV into a **party game console** that runs from a USB drive — players' phones are the controllers. No app install, just scan a QR code.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/Gameu?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/Gameu/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/Gameu?style=flat-square&label=updated)](https://github.com/diamondrubinny/Gameu/commits) ![License](https://img.shields.io/github/license/diamondrubinny/Gameu?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Gameu?style=flat-square)
+![AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 **[→ Play](https://github.com/diamondrubinny/Gameu#readme)**
 
@@ -114,7 +112,7 @@ Turn any TV into a **party game console** that runs from a USB drive — players
 ### 🍽️ [MenuAI](https://github.com/diamondrubinny/menuai)
 Designer-grade **menu builder** for restaurants, cafés &amp; bars — any language with full RTL, 16 themes, export to a single HTML file, PDF or QR code.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/menuai?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/menuai/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/menuai?style=flat-square&label=updated)](https://github.com/diamondrubinny/menuai/commits) ![License](https://img.shields.io/github/license/diamondrubinny/menuai?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/menuai?style=flat-square) ![Release](https://img.shields.io/github/v/release/diamondrubinny/menuai?style=flat-square)
+![AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 **[→ Build a menu](https://github.com/diamondrubinny/menuai#readme)** · [Download](https://github.com/diamondrubinny/menuai/releases/latest)
 
@@ -126,7 +124,7 @@ Designer-grade **menu builder** for restaurants, cafés &amp; bars — any langu
 ### 🎃 [SCARY — Android TV](https://github.com/diamondrubinny/Scary)
 The **horror home screen** for Android TV. A lightweight launcher built for movie nights.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/Scary?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/Scary/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/Scary?style=flat-square&label=updated)](https://github.com/diamondrubinny/Scary/commits) ![License](https://img.shields.io/github/license/diamondrubinny/Scary?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/Scary?style=flat-square)
+![Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat-square) ![Android TV](https://img.shields.io/badge/Android_TV-3DDC84?style=flat-square&logo=android&logoColor=white)
 
 **[→ Download APK](https://github.com/diamondrubinny/Scary/releases)**
 
@@ -136,7 +134,7 @@ The **horror home screen** for Android TV. A lightweight launcher built for movi
 ### 🔌 [The Integrator](https://github.com/diamondrubinny/TheIntegrator)
 Modular automation &amp; integration framework with CLI + GUI and an **AI Architect** that generates new integration tools on demand.
 
-[![Stars](https://img.shields.io/github/stars/diamondrubinny/TheIntegrator?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/TheIntegrator/stargazers) [![Last commit](https://img.shields.io/github/last-commit/diamondrubinny/TheIntegrator?style=flat-square&label=updated)](https://github.com/diamondrubinny/TheIntegrator/commits) ![License](https://img.shields.io/github/license/diamondrubinny/TheIntegrator?style=flat-square) ![Lang](https://img.shields.io/github/languages/top/diamondrubinny/TheIntegrator?style=flat-square)
+![MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
 **[→ Explore](https://github.com/diamondrubinny/TheIntegrator#readme)**
 
@@ -146,11 +144,32 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 
 ## 🛠️ Developer utilities
 
-| Tool | What it does | |
-|------|--------------|---|
-| ⚡ **[PortZapper](https://github.com/diamondrubinny/PortZapper)** | Cross-platform CLI that finds and kills the process locking a port — goodbye `EADDRINUSE`. | [![Stars](https://img.shields.io/github/stars/diamondrubinny/PortZapper?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/PortZapper/stargazers) |
-| 🛡️ **[Devguard](https://github.com/diamondrubinny/Devguard)** | Background utility that auto-formats JSON in your clipboard and warns about leaked API keys &amp; tokens in real time. | [![Stars](https://img.shields.io/github/stars/diamondrubinny/Devguard?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/Devguard/stargazers) |
-| 🎬 **[The Horror Archive](https://github.com/diamondrubinny/The-Horror-Archive)** | Stremio catalog addon curating trending &amp; top-rated horror movies via TMDB. | [![Stars](https://img.shields.io/github/stars/diamondrubinny/The-Horror-Archive?style=flat-square&logo=github&label=Stars&color=f5c518)](https://github.com/diamondrubinny/The-Horror-Archive/stargazers) |
+| Tool | What it does | License |
+|------|--------------|---------|
+| ⚡ **[PortZapper](https://github.com/diamondrubinny/PortZapper)** | Cross-platform CLI that finds and kills the process locking a port — goodbye `EADDRINUSE`. | MIT |
+| 🛡️ **[Devguard](https://github.com/diamondrubinny/Devguard)** | Background utility that auto-formats JSON in your clipboard and warns about leaked API keys &amp; tokens in real time. | MIT |
+| 🎬 **[The Horror Archive](https://github.com/diamondrubinny/The-Horror-Archive)** | Stremio catalog addon curating trending &amp; top-rated horror movies via TMDB. | MIT |
+
+## 📊 Live stats
+
+<!-- STATS:START -->
+**22** public repositories · **11** ⭐ total · **1** followers
+
+| Project | ⭐ Stars | Latest release | Last update |
+|---|:---:|---|---|
+| [🛡️ Antirea](https://github.com/diamondrubinny/Antirea) | 10 | — | 2026-11-10 |
+| [🧠 D.Ai OS](https://github.com/diamondrubinny/D.Ai) | 0 | [v0.1.0-alpha](https://github.com/diamondrubinny/D.Ai/releases) | 2026-11-09 |
+| [📺 Rubinny Signage](https://github.com/diamondrubinny/rubinny-signage) | 0 | [v0.12.0](https://github.com/diamondrubinny/rubinny-signage/releases) | 2026-11-05 |
+| [💜 NexaHeart](https://github.com/diamondrubinny/NexaHeart) | 0 | [v0.1.0-alpha](https://github.com/diamondrubinny/NexaHeart/releases) | 2026-11-10 |
+| [⌨️ KeyFlip](https://github.com/diamondrubinny/keyflip) | 0 | [v0.1.0-preview.8](https://github.com/diamondrubinny/keyflip/releases) | 2026-11-10 |
+| [💬 Botwa](https://github.com/diamondrubinny/Botwa) | 0 | — | 2026-11-10 |
+| [🎮 Gameu](https://github.com/diamondrubinny/Gameu) | 0 | [v0.1.0](https://github.com/diamondrubinny/Gameu/releases) | 2026-11-01 |
+| [🍽️ MenuAI](https://github.com/diamondrubinny/menuai) | 1 | [v0.2.0](https://github.com/diamondrubinny/menuai/releases) | 2026-11-08 |
+| [🎃 SCARY](https://github.com/diamondrubinny/Scary) | 0 | [stable](https://github.com/diamondrubinny/Scary/releases) | 2026-11-09 |
+| [🔌 The Integrator](https://github.com/diamondrubinny/TheIntegrator) | 0 | — | 2025-12-27 |
+
+<sub>Auto-updated daily by GitHub Actions · last run 2026-11-10 00:00 UTC</sub>
+<!-- STATS:END -->
 
 ## 🧰 Tech stack
 
@@ -193,10 +212,19 @@ Modular automation &amp; integration framework with CLI + GUI and an **AI Archit
 
 **שלום, אני דיימונד רוביני — מפתח Full-Stack ובונה מערכות.**
 אני בונה כלים חינמיים בקוד פתוח, מאובטחים, נגישים ומותאמים לעברית ול־RTL מהיסוד:
-הגנה מפני הנדסה לאחור ושכפול (Antirea), מערכת הפעלה עם AI מקומי (D.Ai OS), שילוט דיגיטלי בהתקנה עצמית (Rubinny Signage), לאנצ'ר אימה ל־Android TV (SCARY),
-פלטפורמת אוטומציה ואינטגרציות (The Integrator),
-פלטפורמת היכרויות בקוד פתוח (NexaHeart), קונסולת משחקי מסיבה לטלוויזיה (Gameu),
-בונה תפריטים רב־לשוני (MenuAI), ותיקון טקסט שהוקלד בשפה הלא נכונה — עברית, רוסית וערבית (KeyFlip).
+
+- 🛡️ **Antirea** — הגנה מפני הנדסה לאחור ושכפול קוד
+- 🧠 **D.Ai OS** — מערכת הפעלה לינוקס עם AI מקומי מובנה
+- 📺 **Rubinny Signage** — שילוט דיגיטלי בהתקנה עצמית
+- 💜 **NexaHeart** — פלטפורמת היכרויות בקוד פתוח
+- ⌨️ **KeyFlip** — תיקון טקסט שהוקלד בשפה הלא נכונה (עברית, רוסית וערבית)
+- 💬 **Botwa** — שרת צ'אטבוט לווטסאפ ותיבת פניות משותפת לצוותים, בהתקנה עצמית
+- 🎮 **Gameu** — קונסולת משחקי מסיבה לטלוויזיה
+- 🍽️ **MenuAI** — בונה תפריטים רב־לשוני
+- 🎃 **SCARY** — לאנצ'ר אימה ל־Android TV
+- 🔌 **The Integrator** — פלטפורמת אוטומציה ואינטגרציות
+
+**איך לעזור / ליצור קשר:**
 
 - ⭐ אהבתם פרויקט? תנו לו כוכב
 - 🐛 מצאתם באג? פתחו Issue בריפו הרלוונטי
